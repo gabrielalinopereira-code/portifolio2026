@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio Rapunzel 2027 - Links de Exercícios GitHub</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Cinzel for fairy tale headers & Plus Jakarta Sans / Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            corona: {
+              50: '#fffbeb',
+              100: '#fef3c7',
+              300: '#fde047',
+              400: '#facc15',
+              500: '#eab308',
+              600: '#ca8a04',
+            },
+            rapunzel: {
+              950: '#0d0417',
+              900: '#17092b',
+              800: '#2a0e4a',
+              700: '#431773',
+              600: '#6421a8',
+              500: '#8b2fc9',
+              400: '#b053eb',
+              300: '#d48dff',
+              200: '#e9c4ff',
+            }
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Fira Code', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0d0417;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #431773;
+      border-radius: 4px;
+      border: 1px solid #facc15;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6421a8;
+    }
+
+    /* Magical Sky Gradient */
+    .bg-magical-sky {
+      background: radial-gradient(circle at 50% 15%, #2a0e4a 0%, #17092b 50%, #0d0417 100%);
+    }
+
+    /* Floating Lanterns Animation */
+    .lantern-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .floating-lantern {
+      position: absolute;
+      bottom: -60px;
+      width: 26px;
+      height: 36px;
+      background: linear-gradient(135deg, #fef08a 0%, #facc15 45%, #f97316 100%);
+      border-radius: 6px 6px 12px 12px;
+      box-shadow: 0 0 15px rgba(250, 204, 21, 0.8), 0 0 30px rgba(249, 115, 22, 0.4);
+      animation: floatUp 15s infinite ease-in-out;
+      opacity: 0;
+    }
+
+    .floating-lantern::after {
+      content: '';
+      position: absolute;
+      bottom: 3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 7px;
+      height: 7px;
+      background: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #ffffff, 0 0 12px #facc15;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(0.6) rotate(0deg);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.85;
+      }
+      85% {
+        opacity: 0.85;
+      }
+      100% {
+        transform: translateY(-115vh) scale(1.1) rotate(12deg);
+        opacity: 0;
+      }
+    }
+
+    /* Glow utilities */
+    .glow-gold {
+      filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.7));
+    }
+    .glow-star {
+      filter: drop-shadow(0 0 12px rgba(250, 204, 21, 0.9));
+    }
+    .braid-border {
+      background-image: repeating-linear-gradient(45deg, #facc15 0, #facc15 10px, #ca8a04 10px, #ca8a04 20px);
+    }
+
+    /* Glassmorphism Card */
+    .glass-card {
+      background: rgba(23, 9, 43, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(176, 83, 235, 0.25);
+    }
+    .glass-card:hover {
+      border-color: rgba(250, 204, 21, 0.5);
+    }
+
+    /* Shimmer effect for buttons */
+    @keyframes shimmer {
+      100% { transform: translateX(100%); }
+    }
+    .shimmer-btn {
+      position: relative;
+      overflow: hidden;
+    }
+    .shimmer-btn::after {
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      transform: translateX(-100%);
+      background-image: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0) 0,
+        rgba(255, 255, 255, 0.25) 20%,
+        rgba(255, 255, 255, 0.6) 60%,
+        rgba(255, 255, 255, 0)
+      );
+      animation: shimmer 2.5s infinite;
+      content: '';
+    }
+
+    /* Golden Star Button Pulse */
+    .star-btn {
+      background: linear-gradient(135deg, #fef08a 0%, #facc15 50%, #eab308 100%);
+      box-shadow: 0 0 18px rgba(250, 204, 21, 0.5);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .star-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 0 28px rgba(250, 204, 21, 0.8);
+    }
+  </style>
+</head>
+<body class="bg-magical-sky text-slate-100 font-sans min-h-screen relative flex flex-col selection:bg-corona-400 selection:text-rapunzel-950">
+
+  <!-- Background Animated Lanterns -->
+  <div id="lanterns-container" class="lantern-container" aria-hidden="true"></div>
+
+  <!-- Top Golden Braid Border Line -->
+  <div class="h-1.5 w-full braid-border shadow-[0_0_12px_#facc15] relative z-20"></div>
+
+  <!-- Header Section -->
+  <header class="relative z-10 border-b border-rapunzel-700/50 bg-rapunzel-950/85 backdrop-blur-md px-4 py-6 lg:py-8">
+    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6">
+      
+      <!-- Corona Sun Emblem & Title -->
+      <div class="flex items-center gap-4 text-center lg:text-left">
+        <div class="relative group cursor-pointer" onclick="triggerSunBurst()">
+          <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-corona-600 via-corona-400 to-amber-200 p-0.5 shadow-[0_0_22px_rgba(250,204,21,0.6)] transition-transform duration-300 group-hover:scale-105">
+            <div class="w-full h-full bg-rapunzel-950 rounded-full flex items-center justify-center p-2">
+              <!-- Corona Sun SVG -->
+              <svg class="w-10 h-10 text-corona-400 glow-gold animate-pulse" viewBox="0 0 100 100" fill="currentColor">
+                <circle cx="50" cy="50" r="20" />
+                <path d="M50,10 Q53,25 50,30 Q47,25 50,10 Z M50,90 Q53,75 50,70 Q47,75 50,90 Z M10,50 Q25,53 30,50 Q25,47 10,50 Z M90,50 Q75,53 70,50 Q75,47 90,50 Z M22,22 Q34,31 36,36 Q31,34 22,22 Z M78,78 Q66,69 64,64 Q69,66 78,78 Z M78,22 Q69,34 64,36 Q66,31 78,22 Z M22,78 Q31,66 36,64 Q34,69 22,78 Z" />
+              </svg>
+            </div>
+          </div>
+          <span class="absolute -bottom-1 -right-1 text-xs bg-corona-500 text-rapunzel-950 font-bold px-1.5 py-0.5 rounded-full shadow">2027</span>
+        </div>
+
+        <div>
+          <h1 class="font-cinzel text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-corona-100 via-corona-400 to-rapunzel-300 bg-clip-text text-transparent drop-shadow-sm">
+            Portfólio de Exercícios
+          </h1>
+          <p class="text-rapunzel-200 text-sm flex items-center justify-center lg:justify-start gap-2 mt-1">
+            <i class="fa-solid fa-star text-corona-400 text-xs"></i>
+            <span>Projetos Hospedados no GitHub Pages • Ano Letivo 2027</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Student & Course Info Card -->
+      <div class="glass-card rounded-2xl p-4 w-full lg:w-auto flex flex-wrap items-center justify-around lg:justify-end gap-4 text-xs sm:text-sm">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-rapunzel-800/80 border border-rapunzel-500/40 flex items-center justify-center text-corona-400">
+            <i class="fa-solid fa-user-graduate"></i>
+          </div>
+          <div>
+            <span class="text-rapunzel-300 text-xs block font-semibold uppercase tracking-wider">Aluno(a)</span>
+            <input type="text" id="student-name-input" value="Rapunzel de Corona" class="bg-transparent font-bold text-slate-100 focus:outline-none focus:border-b border-corona-400 w-36 sm:w-44" title="Clique para editar seu nome">
+          </div>
+        </div>
+
+        <div class="h-8 w-px bg-rapunzel-700/60 hidden sm:block"></div>
+
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-rapunzel-800/80 border border-rapunzel-500/40 flex items-center justify-center text-corona-400">
+            <i class="fa-solid fa-chalkboard-user"></i>
+          </div>
+          <div>
+            <span class="text-rapunzel-300 text-xs block font-semibold uppercase tracking-wider">Turma / Professor</span>
+            <div class="flex items-center gap-1 font-semibold text-slate-200">
+              <input type="text" id="student-class-input" value="3º Ano T.I." class="bg-transparent focus:outline-none focus:border-b border-corona-400 w-20 text-xs">
+              <span>•</span>
+              <input type="text" id="teacher-name-input" value="Prof. Flynn Rider" class="bg-transparent focus:outline-none focus:border-b border-corona-400 w-28 text-xs">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="relative z-10 max-w-7xl mx-auto px-4 py-8 flex-grow w-full">
+
+    <!-- Progress & Sundrop Flower Banner -->
+    <section class="glass-card rounded-3xl p-6 mb-8 border border-rapunzel-500/30 relative overflow-hidden shadow-2xl">
+      <div class="absolute -right-10 -bottom-10 opacity-15 pointer-events-none text-corona-400">
+        <!-- Magic Sundrop Flower SVG Background -->
+        <svg class="w-64 h-64" viewBox="0 0 100 100" fill="currentColor">
+          <path d="M50,10 C55,30 70,35 90,50 C70,65 55,70 50,90 C45,70 30,65 10,50 C30,35 45,30 50,10 Z" />
+        </svg>
+      </div>
+
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+        <div class="space-y-2 text-center md:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-corona-500/20 border border-corona-400/40 text-corona-300 text-xs font-semibold">
+            <i class="fa-solid fa-sparkles text-corona-400"></i>
+            <span>Painel de Avaliação do Professor</span>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-cinzel font-bold text-slate-100">Central de Trabalhos & Atividades 2027</h2>
+          <p class="text-rapunzel-200 text-sm max-w-xl">
+            Professor, clique no botão de <strong class="text-corona-300 font-bold">Estrela Mágica ⭐</strong> em cada card para abrir diretamente o projeto hospedado e testá-lo em tempo real!
+          </p>
+        </div>
+
+        <!-- Dynamic Counter Stats -->
+        <div class="grid grid-cols-3 gap-3 sm:gap-6 w-full md:w-auto text-center">
+          <div class="bg-rapunzel-900/80 border border-rapunzel-600/40 rounded-2xl p-3 sm:p-4">
+            <span class="block text-2xl sm:text-3xl font-bold font-cinzel text-corona-400" id="stat-total">0</span>
+            <span class="text-[11px] sm:text-xs text-rapunzel-200 font-medium uppercase tracking-wider">Total</span>
+          </div>
+          <div class="bg-rapunzel-900/80 border border-emerald-500/40 rounded-2xl p-3 sm:p-4">
+            <span class="block text-2xl sm:text-3xl font-bold font-cinzel text-emerald-400" id="stat-completed">0</span>
+            <span class="text-[11px] sm:text-xs text-emerald-200 font-medium uppercase tracking-wider">Entregues</span>
+          </div>
+          <div class="bg-rapunzel-900/80 border border-amber-500/40 rounded-2xl p-3 sm:p-4">
+            <span class="block text-2xl sm:text-3xl font-bold font-cinzel text-amber-400" id="stat-pending">0</span>
+            <span class="text-[11px] sm:text-xs text-amber-200 font-medium uppercase tracking-wider">Pendentes</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Glowing Magic Progress Bar -->
+      <div class="mt-6 pt-4 border-t border-rapunzel-800/60">
+        <div class="flex justify-between text-xs text-rapunzel-200 font-semibold mb-2">
+          <span>Brilho do Conhecimento (Projetos Concluídos)</span>
+          <span id="progress-percentage" class="text-corona-400 font-bold">0%</span>
+        </div>
+        <div class="w-full h-3 bg-rapunzel-950 rounded-full overflow-hidden p-0.5 border border-rapunzel-700/50">
+          <div id="progress-bar-fill" class="h-full bg-gradient-to-r from-amber-500 via-corona-400 to-yellow-200 rounded-full transition-all duration-700 shadow-[0_0_10px_#facc15]" style="width: 0%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Toolbar: Search, Filters & Add Button -->
+    <section class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
+      
+      <!-- Bimestre Filter Tabs -->
+      <div class="flex items-center gap-1.5 p-1.5 bg-rapunzel-950/90 border border-rapunzel-700/60 rounded-2xl w-full md:w-auto overflow-x-auto scrollbar-none">
+        <button onclick="setFilter('all')" class="filter-tab active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-rapunzel-600 text-white shadow" data-filter="all">
+          ✨ Todos
+        </button>
+        <button onclick="setFilter('1')" class="filter-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap text-rapunzel-200 hover:text-white hover:bg-rapunzel-800/60" data-filter="1">
+          1º Bimestre
+        </button>
+        <button onclick="setFilter('2')" class="filter-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap text-rapunzel-200 hover:text-white hover:bg-rapunzel-800/60" data-filter="2">
+          2º Bimestre
+        </button>
+        <button onclick="setFilter('3')" class="filter-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap text-rapunzel-200 hover:text-white hover:bg-rapunzel-800/60" data-filter="3">
+          3º Bimestre
+        </button>
+        <button onclick="setFilter('4')" class="filter-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap text-rapunzel-200 hover:text-white hover:bg-rapunzel-800/60" data-filter="4">
+          4º Bimestre
+        </button>
+      </div>
+
+      <!-- Search & Add Actions -->
+      <div class="flex items-center gap-3 w-full md:w-auto">
+        <div class="relative flex-grow md:w-64">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-rapunzel-400 text-sm"></i>
+          <input type="text" id="search-input" oninput="renderExercises()" placeholder="Buscar trabalho ou tecnologia..." class="w-full bg-rapunzel-950/80 border border-rapunzel-700/60 rounded-2xl pl-10 pr-4 py-2 text-sm text-slate-100 placeholder-rapunzel-400/60 focus:outline-none focus:border-corona-400 transition-colors">
+        </div>
+
+        <button onclick="openModal('add')" class="shimmer-btn bg-gradient-to-r from-corona-500 to-amber-600 hover:from-corona-400 hover:to-amber-500 text-rapunzel-950 font-bold px-4 py-2.5 rounded-2xl text-xs sm:text-sm flex items-center gap-2 shadow-[0_0_15px_rgba(250,204,21,0.3)] transition-transform active:scale-95 whitespace-nowrap">
+          <i class="fa-solid fa-plus text-sm"></i>
+          <span>Cadastrar Projeto</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Exercises Grid -->
+    <section id="exercise-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Dynamic Exercise Cards with Golden Star Buttons injected here -->
+    </section>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden flex-col items-center justify-center text-center py-16 px-4 glass-card rounded-3xl mt-4">
+      <div class="w-20 h-20 rounded-full bg-rapunzel-800/60 flex items-center justify-center text-corona-400 mb-4 text-3xl">
+        <i class="fa-solid fa-folder-open"></i>
+      </div>
+      <h3 class="font-cinzel text-xl font-bold text-slate-200 mb-2">Nenhum exercício encontrado</h3>
+      <p class="text-rapunzel-300 text-sm max-w-md mb-6">Ainda não há atividades cadastradas neste filtro. Adicione seu primeiro link do GitHub Pages!</p>
+      <button onclick="openModal('add')" class="bg-rapunzel-700 hover:bg-rapunzel-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition">
+        + Cadastrar Trabalho
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="relative z-10 border-t border-rapunzel-800/80 bg-rapunzel-950/90 py-6 px-4 text-center text-xs text-rapunzel-300">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="text-corona-400 font-bold font-cinzel">Corona Code 2027</span>
+        <span>• Portfólio de Atividades Curriculares de TI</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <button onclick="resetToDefaults()" class="hover:text-corona-400 underline transition">Restaurar Exemplos Padrão</button>
+        <span>•</span>
+        <button onclick="exportData()" class="hover:text-corona-400 underline transition"><i class="fa-solid fa-download mr-1"></i>Exportar Backup</button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MASCOT PASCAL (FLOATING CHAMELEON) ================= -->
+  <div id="pascal-widget" class="fixed bottom-5 right-5 z-40 flex items-end gap-3 group">
+    <!-- Speech Bubble -->
+    <div id="pascal-bubble" class="glass-card bg-rapunzel-900/95 border-corona-400/50 p-3.5 rounded-2xl max-w-xs text-xs text-slate-200 shadow-2xl relative transition-all duration-300 transform scale-100 opacity-100 mb-2">
+      <div class="flex items-center justify-between gap-2 mb-1">
+        <span class="font-bold text-corona-400 font-cinzel text-[11px] flex items-center gap-1">
+          <i class="fa-solid fa-comment-dots"></i> Pascal Diz:
+        </span>
+        <button onclick="closePascalBubble(event)" class="text-rapunzel-400 hover:text-white text-xs p-0.5">✕</button>
+      </div>
+      <p id="pascal-text" class="italic text-slate-100">"Oi Professor! Clique na Estrela Mágica ⭐ para abrir os projetos hospedados no GitHub Pages!"</p>
+      <!-- Arrow pointing right to Pascal -->
+      <div class="absolute -bottom-2 right-6 w-3 h-3 bg-rapunzel-900 border-r border-b border-corona-400/50 transform rotate-45"></div>
+    </div>
+
+    <!-- Pascal Button Icon -->
+    <button onclick="interactPascal()" id="pascal-btn" class="relative group/pascal p-3 rounded-full bg-emerald-600 hover:bg-emerald-500 border-2 border-corona-400 shadow-[0_0_20px_rgba(16,185,129,0.5)] transition-all duration-300 transform hover:scale-110 active:scale-95" title="Clique no Pascal para ver frases e mudar de cor!">
+      <!-- Chameleon SVG Icon -->
+      <svg id="pascal-svg" class="w-8 h-8 text-slate-950 transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19,10C19,8.5 18,7.2 16.6,6.7C16.8,6.2 17,5.6 17,5A3,3 0 0,0 14,2C13.2,2 12.5,2.3 12,2.8C11.5,2.3 10.8,2 10,2A3,3 0 0,0 7,5C7,5.6 7.2,6.2 7.4,6.7C6,7.2 5,8.5 5,10C5,11 5.4,11.9 6,12.6V16A3,3 0 0,0 9,19H10A3,3 0 0,0 13,22H15A1,1 0 0,0 16,21V19A3,3 0 0,0 19,16V12.6C19.6,11.9 20,11 20,10M9,4A1,1 0 0,1 10,5A1,1 0 0,1 9,6A1,1 0 0,1 8,5A1,1 0 0,1 9,4M15,4A1,1 0 0,1 16,5A1,1 0 0,1 15,6A1,1 0 0,1 14,5A1,1 0 0,1 15,4M12,17A1,1 0 0,1 11,16A1,1 0 0,1 12,15A1,1 0 0,1 13,16A1,1 0 0,1 12,17Z"/>
+      </svg>
+      <span class="absolute -top-1 -right-1 flex h-3 w-3">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-corona-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3 bg-corona-500"></span>
+      </span>
+    </button>
+  </div>
+
+  <!-- ================= MODAL: ADD / EDIT LINK ================= -->
+  <div id="exercise-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-rapunzel-950/80 backdrop-blur-md hidden transition-opacity duration-300">
+    <div class="glass-card bg-rapunzel-900 border-rapunzel-500/50 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      
+      <div class="flex items-center justify-between border-b border-rapunzel-700/60 pb-4 mb-6">
+        <h3 id="modal-title" class="font-cinzel text-xl font-bold text-corona-400 flex items-center gap-2">
+          <i class="fa-solid fa-star text-corona-400"></i>
+          <span>Cadastrar Novo Trabalho do GitHub</span>
+        </h3>
+        <button onclick="closeModal('exercise')" class="w-8 h-8 rounded-full bg-rapunzel-800 hover:bg-rapunzel-700 text-rapunzel-200 flex items-center justify-center transition">✕</button>
+      </div>
+
+      <form id="exercise-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+        <input type="hidden" id="form-id">
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="sm:col-span-2 space-y-1">
+            <label class="text-xs font-semibold text-rapunzel-200">Título do Exercício / Trabalho</label>
+            <input type="text" id="form-title" required placeholder="Ex: A Torre de Corona - Página Web" class="w-full bg-rapunzel-950 border border-rapunzel-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-corona-400">
+          </div>
+          <div class="space-y-1">
+            <label class="text-xs font-semibold text-rapunzel-200">Bimestre</label>
+            <select id="form-bimester" class="w-full bg-rapunzel-950 border border-rapunzel-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-corona-400">
+              <option value="1">1º Bimestre</option>
+              <option value="2">2º Bimestre</option>
+              <option value="3">3º Bimestre</option>
+              <option value="4">4º Bimestre</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="space-y-1">
+            <label class="text-xs font-semibold text-rapunzel-200">Status de Entrega</label>
+            <select id="form-status" class="w-full bg-rapunzel-950 border border-rapunzel-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-corona-400">
+              <option value="Entregue">🟢 Entregue</option>
+              <option value="Corrigido">⭐ Corrigido pelo Professor</option>
+              <option value="Pendente">🟡 Pendente</option>
+            </select>
+          </div>
+          <div class="space-y-1">
+            <label class="text-xs font-semibold text-rapunzel-200">Identificador / Nº</label>
+            <input type="text" id="form-num" placeholder="Ex: Ex-01" class="w-full bg-rapunzel-950 border border-rapunzel-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-corona-400">
+          </div>
+        </div>
+
+        <!-- GitHub Links Fields -->
+        <div class="space-y-1">
+          <label class="text-xs font-semibold text-corona-300 flex items-center gap-1.5">
+            <i class="fa-solid fa-globe text-corona-400"></i>
+            <span>Link do Projeto Hospedado (GitHub Pages / Vercel / Site)</span>
+          </label>
+          <input type="url" id="form-url" required placeholder="https://seu-usuario.github.io/nome-do-repositorio" class="w-full bg-rapunzel-950 border border-corona-500/50 rounded-xl px-3.5 py-2 text-sm text-corona-200 focus:outline-none focus:border-corona-400">
+          <span class="text-[11px] text-rapunzel-300 italic">Este é o link que a Estrela Mágica ⭐ irá abrir quando o professor clicar!</span>
+        </div>
+
+        <div class="space-y-1">
+          <label class="text-xs font-semibold text-rapunzel-200 flex items-center gap-1.5">
+            <i class="fa-brands fa-github text-rapunzel-300"></i>
+            <span>Link do Repositório do Código (Opcional)</span>
+          </label>
+          <input type="url" id="form-repo" placeholder="https://github.com/seu-usuario/nome-do-repositorio" class="w-full bg-rapunzel-950 border border-rapunzel-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-corona-400">
+        </div>
+
+        <div class="space-y-1">
+          <label class="text-xs font-semibold text-rapunzel-200">Tecnologias Usadas (separadas por vírgula)</label>
+          <input type="text" id="form-techs" placeholder="Ex: HTML5, CSS3, JavaScript, Tailwind" class="w-full bg-rapunzel-950 border border-rapunzel-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-corona-400">
+        </div>
+
+        <div class="space-y-1">
+          <label class="text-xs font-semibold text-rapunzel-200">Descrição Resumida / Objetivos</label>
+          <textarea id="form-desc" rows="3" required placeholder="Descreva o que foi desenvolvido neste trabalho..." class="w-full bg-rapunzel-950 border border-rapunzel-700 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-corona-400 resize-none"></textarea>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-4 border-t border-rapunzel-800">
+          <button type="button" onclick="closeModal('exercise')" class="px-4 py-2 rounded-xl text-xs font-semibold text-rapunzel-300 hover:bg-rapunzel-800 transition">Cancelar</button>
+          <button type="submit" class="bg-gradient-to-r from-corona-500 to-amber-600 text-rapunzel-950 font-bold px-5 py-2 rounded-xl text-xs shadow-lg hover:brightness-110 transition">Salvar Projeto</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Custom Notification Toast -->
+  <div id="toast" class="fixed top-5 right-5 z-50 glass-card bg-rapunzel-900/95 border-corona-400 text-slate-100 px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3 transform translate-y-[-150%] transition-transform duration-300 pointer-events-none">
+    <div id="toast-icon" class="text-corona-400 text-lg"><i class="fa-solid fa-circle-check"></i></div>
+    <div id="toast-msg" class="text-xs font-semibold">Mensagem do sistema</div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // Sample Data with GitHub Pages links for instant teacher preview
+    const defaultExercises = [
+      {
+        id: 'ex-1',
+        num: '01',
+        title: 'A Torre de Corona (Layout Flexbox)',
+        bimester: '1',
+        status: 'Entregue',
+        techs: ['HTML5', 'CSS3', 'Flexbox'],
+        description: 'Página responsiva criada com a história da torre de Corona e o mapa do reino. Hospedada diretamente no GitHub Pages.',
+        url: 'www.google.com',
+        repoUrl: 'www.google.com'
+      },
+      {
+        id: 'ex-2',
+        num: '02',
+        title: 'Festival das Lanternas (DOM & Loops)',
+        bimester: '1',
+        status: 'Corrigido',
+        techs: ['JavaScript', 'DOM', 'Tailwind'],
+        description: 'Aplicação interativa em JS que gera reluzentes lanternas flutuantes dinâmicas conforme interação do usuário.',
+        url: 'https://github.com',
+        repoUrl: 'https://github.com'
+      },
+      {
+        id: 'ex-3',
+        num: '03',
+        title: 'Frigideira Mágica (Jogo Canvas 2D)',
+        bimester: '2',
+        status: 'Entregue',
+        techs: ['HTML Canvas', 'JS OOP', 'CSS3'],
+        description: 'Mini game de física 2D simulando as habilidades de defesa da Rapunzel com sua frigideira.',
+        url: 'https://github.com',
+        repoUrl: 'https://github.com'
+      },
+      {
+        id: 'ex-4',
+        num: '04',
+        title: 'Camuflagem do Pascal (Array Methods)',
+        bimester: '2',
+        status: 'Pendente',
+        techs: ['JavaScript', 'CSS Variables'],
+        description: 'Sistema interativo de troca dinâmica de temas e cores usando seletores e eventos em JS.',
+        url: 'https://github.com',
+        repoUrl: 'https://github.com'
+      },
+      {
+        id: 'ex-5',
+        num: '05',
+        title: 'Poção da Flor Gota de Sol (Fetch API)',
+        bimester: '3',
+        status: 'Pendente',
+        techs: ['JS Async', 'Promises', 'API'],
+        description: 'Consumo de API assíncrona para buscar dados meteorológicos e astronômicos de Corona.',
+        url: 'https://github.com',
+        repoUrl: 'https://github.com'
+      }
+    ];
+
+    // State Variables
+    let exercises = [];
+    let currentFilter = 'all';
+    let pascalColorIndex = 0;
+
+    const pascalColors = [
+      { name: 'Emerald', bg: 'bg-emerald-600', fill: '#10b981', border: 'border-corona-400' },
+      { name: 'Purple', bg: 'bg-rapunzel-600', fill: '#8b2fc9', border: 'border-corona-400' },
+      { name: 'Gold', bg: 'bg-amber-500', fill: '#facc15', border: 'border-rapunzel-900' },
+      { name: 'Crimson', bg: 'bg-rose-600', fill: '#f43f5e', border: 'border-corona-400' },
+      { name: 'Cyan', bg: 'bg-cyan-600', fill: '#06b6d4', border: 'border-corona-400' }
+    ];
+
+    const pascalQuotes = [
+      "Pascal diz: Clique no botão ⭐ para testar o site no GitHub Pages!",
+      "Todos os links dos trabalhos estão prontos para correção do professor Flynn!",
+      "🍳 Se o código der erro, lembre-se de checar o console do seu navegador!",
+      "A trança de algoritmos de 2027 está super organizada!",
+      "Pascal testou todos os links do GitHub e deu nota 10!",
+      "Vejo enfim a luz passar... e os seus commits no GitHub estão atualizados!"
+    ];
+
+    // Initialization
+    window.onload = function() {
+      initLanterns();
+      loadData();
+      renderExercises();
+      updateStats();
+      setupProfileListeners();
+    };
+
+    // Create Floating Lanterns Background
+    function initLanterns() {
+      const container = document.getElementById('lanterns-container');
+      container.innerHTML = '';
+      const count = 16;
+      
+      for (let i = 0; i < count; i++) {
+        const lantern = document.createElement('div');
+        lantern.className = 'floating-lantern';
+        lantern.style.left = `${Math.random() * 95}%`;
+        lantern.style.animationDelay = `${Math.random() * 12}s`;
+        lantern.style.animationDuration = `${11 + Math.random() * 8}s`;
+        container.appendChild(lantern);
+      }
+    }
+
+    // LocalStorage Management
+    function loadData() {
+      const savedEx = localStorage.getItem('rapunzel_github_portfolio_2027');
+      if (savedEx) {
+        try {
+          exercises = JSON.parse(savedEx);
+        } catch(e) {
+          exercises = [...defaultExercises];
+        }
+      } else {
+        exercises = [...defaultExercises];
+        saveData();
+      }
+
+      // Load Profile Data
+      const student = localStorage.getItem('rapunzel_student_2027');
+      const studentClass = localStorage.getItem('rapunzel_class_2027');
+      const teacher = localStorage.getItem('rapunzel_teacher_2027');
+
+      if (student) document.getElementById('student-name-input').value = student;
+      if (studentClass) document.getElementById('student-class-input').value = studentClass;
+      if (teacher) document.getElementById('teacher-name-input').value = teacher;
+    }
+
+    function saveData() {
+      localStorage.setItem('rapunzel_github_portfolio_2027', JSON.stringify(exercises));
+      updateStats();
+    }
+
+    function setupProfileListeners() {
+      document.getElementById('student-name-input').addEventListener('change', (e) => {
+        localStorage.setItem('rapunzel_student_2027', e.target.value);
+        showToast('Nome do aluno salvo!');
+      });
+      document.getElementById('student-class-input').addEventListener('change', (e) => {
+        localStorage.setItem('rapunzel_class_2027', e.target.value);
+      });
+      document.getElementById('teacher-name-input').addEventListener('change', (e) => {
+        localStorage.setItem('rapunzel_teacher_2027', e.target.value);
+      });
+    }
+
+    // Render Exercises Cards
+    function renderExercises() {
+      const grid = document.getElementById('exercise-grid');
+      const emptyState = document.getElementById('empty-state');
+      const searchQuery = document.getElementById('search-input').value.toLowerCase();
+
+      grid.innerHTML = '';
+
+      const filtered = exercises.filter(item => {
+        const matchesFilter = (currentFilter === 'all') || (item.bimester === currentFilter);
+        const matchesSearch = item.title.toLowerCase().includes(searchQuery) ||
+                              item.description.toLowerCase().includes(searchQuery) ||
+                              (item.techs && item.techs.some(t => t.toLowerCase().includes(searchQuery))) ||
+                              item.num.toLowerCase().includes(searchQuery);
+        return matchesFilter && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        emptyState.classList.remove('hidden');
+        emptyState.classList.add('flex');
+      } else {
+        emptyState.classList.add('hidden');
+        emptyState.classList.remove('flex');
+
+        filtered.forEach(ex => {
+          const card = document.createElement('div');
+          card.className = 'glass-card rounded-3xl p-5 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-xl group border border-rapunzel-700/50';
+
+          const isCompleted = ex.status === 'Entregue' || ex.status === 'Corrigido';
+
+          // Tech badges HTML
+          const techBadges = (ex.techs || []).map(t => 
+            `<span class="px-2 py-0.5 rounded-md text-[10px] font-mono font-semibold bg-rapunzel-950 border border-rapunzel-700/80 text-rapunzel-200">${t}</span>`
+          ).join(' ');
+
+          card.innerHTML = `
+            <div>
+              <!-- Top Row Metadata & Status -->
+              <div class="flex items-center justify-between gap-2 mb-3">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-rapunzel-950 border border-rapunzel-700 text-corona-400 font-mono">
+                  ${ex.num || 'Ex'} • ${ex.bimester}º Bimestre
+                </span>
+                
+                <button onclick="toggleStatus('${ex.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-bold border transition flex items-center gap-1.5 ${
+                  ex.status === 'Corrigido'
+                    ? 'bg-amber-950/90 border-corona-400 text-corona-300'
+                    : ex.status === 'Entregue'
+                    ? 'bg-emerald-950/80 border-emerald-500/50 text-emerald-300'
+                    : 'bg-purple-950/80 border-rapunzel-600/50 text-rapunzel-300'
+                }" title="Clique para alternar o status de entrega">
+                  <i class="fa-solid ${ex.status === 'Corrigido' ? 'fa-award text-corona-400' : ex.status === 'Entregue' ? 'fa-circle-check text-emerald-400' : 'fa-clock text-amber-400'}"></i>
+                  <span>${ex.status}</span>
+                </button>
+              </div>
+
+              <!-- Title -->
+              <h3 class="font-cinzel text-lg font-bold text-slate-100 group-hover:text-corona-300 transition-colors mb-2">
+                ${ex.title}
+              </h3>
+
+              <!-- Description -->
+              <p class="text-rapunzel-200 text-xs line-clamp-3 mb-3 leading-relaxed">
+                ${ex.description}
+              </p>
+
+              <!-- Tech Stack Badges -->
+              <div class="flex flex-wrap gap-1 mb-4">
+                ${techBadges}
+              </div>
+            </div>
+
+            <!-- Action Section with Prominent Golden Star Button -->
+            <div class="space-y-3 pt-3 border-t border-rapunzel-800/60">
+              
+              <!-- ⭐ GOLDEN STAR BUTTON (PROJECT URL) ⭐ -->
+              <button onclick="openProjectLink('${ex.url}')" class="star-btn w-full text-rapunzel-950 font-black py-2.5 px-4 rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 group/star shadow-lg">
+                <i class="fa-solid fa-star text-rapunzel-950 text-sm group-hover/star:rotate-45 transition-transform"></i>
+                <span>⭐ Abrir Projeto (GitHub Pages)</span>
+                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+              </button>
+
+              <!-- Secondary Repo & Edit Actions -->
+              <div class="flex items-center gap-2">
+                ${ex.repoUrl ? `
+                  <button onclick="openProjectLink('${ex.repoUrl}')" class="flex-grow bg-rapunzel-950 hover:bg-rapunzel-800 text-rapunzel-200 border border-rapunzel-700 py-1.5 px-3 rounded-xl text-xs transition flex items-center justify-center gap-1.5" title="Ver código no GitHub">
+                    <i class="fa-brands fa-github text-sm"></i>
+                    <span>Repositório</span>
+                  </button>
+                ` : ''}
+
+                <button onclick="editExercise('${ex.id}')" class="w-8 h-8 rounded-xl bg-rapunzel-950 hover:bg-rapunzel-800 border border-rapunzel-700 text-rapunzel-200 flex items-center justify-center text-xs transition" title="Editar Links e Dados">
+                  <i class="fa-solid fa-pen"></i>
+                </button>
+
+                <button onclick="deleteExercise('${ex.id}')" class="w-8 h-8 rounded-xl bg-rapunzel-950 hover:bg-red-950/60 border border-rapunzel-700 text-rapunzel-300 hover:text-red-400 flex items-center justify-center text-xs transition" title="Excluir">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+
+            </div>
+          `;
+
+          grid.appendChild(card);
+        });
+      }
+    }
+
+    // Open Link in New Tab
+    function openProjectLink(url) {
+      if (!url || url === '#') {
+        showToast('⚠️ Insira uma URL válida no formulário de edição!');
+        return;
+      }
+      window.open(url, '_blank');
+      showToast('🚀 Abrindo trabalho no GitHub Pages...');
+    }
+
+    // Filter Logic
+    function setFilter(filter) {
+      currentFilter = filter;
+      document.querySelectorAll('.filter-tab').forEach(btn => {
+        if (btn.dataset.filter === filter) {
+          btn.className = 'filter-tab active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-rapunzel-600 text-white shadow';
+        } else {
+          btn.className = 'filter-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap text-rapunzel-200 hover:text-white hover:bg-rapunzel-800/60';
+        }
+      });
+      renderExercises();
+    }
+
+    // Update Statistics Bar
+    function updateStats() {
+      const total = exercises.length;
+      const completed = exercises.filter(e => e.status === 'Entregue' || e.status === 'Corrigido').length;
+      const pending = total - completed;
+      const percent = total === 0 ? 0 : Math.round((completed / total) * 100);
+
+      document.getElementById('stat-total').innerText = total;
+      document.getElementById('stat-completed').innerText = completed;
+      document.getElementById('stat-pending').innerText = pending;
+      document.getElementById('progress-percentage').innerText = `${percent}%`;
+      document.getElementById('progress-bar-fill').style.width = `${percent}%`;
+    }
+
+    // Toggle Status Cycle
+    function toggleStatus(id) {
+      const item = exercises.find(e => e.id === id);
+      if (item) {
+        if (item.status === 'Pendente') item.status = 'Entregue';
+        else if (item.status === 'Entregue') item.status = 'Corrigido';
+        else item.status = 'Pendente';
+
+        saveData();
+        renderExercises();
+        showToast(`Status alterado para: ${item.status}`);
+      }
+    }
+
+    // Modal Operations
+    function openModal(type) {
+      if (type === 'add') {
+        document.getElementById('modal-title').innerText = 'Cadastrar Novo Trabalho do GitHub';
+        document.getElementById('form-id').value = '';
+        document.getElementById('form-title').value = '';
+        document.getElementById('form-bimester').value = '1';
+        document.getElementById('form-status').value = 'Entregue';
+        document.getElementById('form-num').value = `Ex-0${exercises.length + 1}`;
+        document.getElementById('form-url').value = 'https://seu-usuario.github.io/exercicio';
+        document.getElementById('form-repo').value = 'https://github.com/seu-usuario/exercicio';
+        document.getElementById('form-techs').value = 'HTML5, CSS3, JavaScript';
+        document.getElementById('form-desc').value = '';
+        
+        document.getElementById('exercise-modal').classList.remove('hidden');
+      }
+    }
+
+    function closeModal(type) {
+      if (type === 'exercise') {
+        document.getElementById('exercise-modal').classList.add('hidden');
+      }
+    }
+
+    function editExercise(id) {
+      const item = exercises.find(e => e.id === id);
+      if (!item) return;
+
+      document.getElementById('modal-title').innerText = 'Editar Trabalho / Projeto';
+      document.getElementById('form-id').value = item.id;
+      document.getElementById('form-title').value = item.title;
+      document.getElementById('form-bimester').value = item.bimester;
+      document.getElementById('form-status').value = item.status;
+      document.getElementById('form-num').value = item.num || '';
+      document.getElementById('form-url').value = item.url || '';
+      document.getElementById('form-repo').value = item.repoUrl || '';
+      document.getElementById('form-techs').value = (item.techs || []).join(', ');
+      document.getElementById('form-desc').value = item.description;
+
+      document.getElementById('exercise-modal').classList.remove('hidden');
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+
+      const id = document.getElementById('form-id').value;
+      const title = document.getElementById('form-title').value;
+      const bimester = document.getElementById('form-bimester').value;
+      const status = document.getElementById('form-status').value;
+      const num = document.getElementById('form-num').value;
+      const url = document.getElementById('form-url').value;
+      const repoUrl = document.getElementById('form-repo').value;
+      const techsRaw = document.getElementById('form-techs').value;
+      const description = document.getElementById('form-desc').value;
+
+      const techs = techsRaw.split(',').map(t => t.trim()).filter(t => t.length > 0);
+
+      if (id) {
+        const index = exercises.findIndex(ex => ex.id === id);
+        if (index !== -1) {
+          exercises[index] = { id, title, bimester, status, num, url, repoUrl, techs, description };
+          showToast('Trabalho atualizado com sucesso!');
+        }
+      } else {
+        const newEx = {
+          id: 'ex-' + Date.now(),
+          title,
+          bimester,
+          status,
+          num: num || `Ex-${exercises.length + 1}`,
+          url,
+          repoUrl,
+          techs,
+          description
+        };
+        exercises.unshift(newEx);
+        showToast('Novo trabalho cadastrado!');
+      }
+
+      saveData();
+      renderExercises();
+      closeModal('exercise');
+    }
+
+    function deleteExercise(id) {
+      if (confirm('Deseja realmente remover este trabalho do portfólio?')) {
+        exercises = exercises.filter(e => e.id !== id);
+        saveData();
+        renderExercises();
+        showToast('Exercício removido.');
+      }
+    }
+
+    // Pascal Mascot Interactions
+    function interactPascal() {
+      pascalColorIndex = (pascalColorIndex + 1) % pascalColors.length;
+      const theme = pascalColors[pascalColorIndex];
+      const btn = document.getElementById('pascal-btn');
+      
+      btn.className = `relative group/pascal p-3 rounded-full ${theme.bg} ${theme.border} border-2 shadow-[0_0_20px_rgba(250,204,21,0.5)] transition-all duration-300 transform hover:scale-110 active:scale-95`;
+
+      const randomQuote = pascalQuotes[Math.floor(Math.random() * pascalQuotes.length)];
+      document.getElementById('pascal-text').innerText = randomQuote;
+
+      const bubble = document.getElementById('pascal-bubble');
+      bubble.style.opacity = '1';
+      bubble.style.transform = 'scale(1)';
+    }
+
+    function closePascalBubble(e) {
+      e.stopPropagation();
+      const bubble = document.getElementById('pascal-bubble');
+      bubble.style.opacity = '0';
+      bubble.style.transform = 'scale(0.8)';
+    }
+
+    function triggerSunBurst() {
+      showToast('☀️ Que a luz do Sol de Corona ilumine seus estudos em 2027!');
+    }
+
+    // Utility Toasts & Backup
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').innerText = msg;
+      toast.style.transform = 'translateY(0)';
+      setTimeout(() => {
+        toast.style.transform = 'translateY(-150%)';
+      }, 3200);
+    }
+
+    function resetToDefaults() {
+      if (confirm('Restaurar os exercícios de exemplo?')) {
+        exercises = [...defaultExercises];
+        saveData();
+        renderExercises();
+        showToast('Exemplos padrão restaurados!');
+      }
+    }
+
+    function exportData() {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exercises, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `portfolio_rapunzel_2027.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+      showToast('Backup do portfólio baixado!');
+    }
+  </script>
+</body>
+</html>
