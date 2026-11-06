@@ -1,954 +1,1320 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="dark">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfólio Rapunzel 2027 - Links de Exercícios GitHub</title>
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Google Fonts: Cinzel for fairy tale headers & Plus Jakarta Sans / Fira Code -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
-  
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio de JavaScript 2027 — Rapunzel & GitHub Sync</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cinzel (Fairytale), Fira Code (Monospace for JS), Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            corona: {
-              50: '#fffbeb',
-              100: '#fef3c7',
-              300: '#fde047',
-              400: '#facc15',
-              500: '#eab308',
-              600: '#ca8a04',
-            },
-            rapunzel: {
-              950: '#0d0417',
-              900: '#17092b',
-              800: '#2a0e4a',
-              700: '#431773',
-              600: '#6421a8',
-              500: '#8b2fc9',
-              400: '#b053eb',
-              300: '#d48dff',
-              200: '#e9c4ff',
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rapunzel: {
+                            night: '#130826',
+                            deep: '#1b0c33',
+                            purple: '#2d1154',
+                            violet: '#6b21a8',
+                            lilac: '#c084fc',
+                            softpink: '#f472b6',
+                            gold: '#fbbf24',
+                            sun: '#fef08a',
+                            glow: '#ff9800',
+                            pascal: '#22c55e'
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        code: ['Fira Code', 'monospace'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
             }
-          },
-          fontFamily: {
-            cinzel: ['Cinzel', 'serif'],
-            sans: ['Plus Jakarta Sans', 'sans-serif'],
-            mono: ['Fira Code', 'monospace']
-          }
         }
-      }
-    }
-  </script>
+    </script>
 
-  <style>
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0d0417;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #431773;
-      border-radius: 4px;
-      border: 1px solid #facc15;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #6421a8;
-    }
-
-    /* Magical Sky Gradient */
-    .bg-magical-sky {
-      background: radial-gradient(circle at 50% 15%, #2a0e4a 0%, #17092b 50%, #0d0417 100%);
-    }
-
-    /* Floating Lanterns Animation */
-    .lantern-container {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 0;
-    }
-
-    .floating-lantern {
-      position: absolute;
-      bottom: -60px;
-      width: 26px;
-      height: 36px;
-      background: linear-gradient(135deg, #fef08a 0%, #facc15 45%, #f97316 100%);
-      border-radius: 6px 6px 12px 12px;
-      box-shadow: 0 0 15px rgba(250, 204, 21, 0.8), 0 0 30px rgba(249, 115, 22, 0.4);
-      animation: floatUp 15s infinite ease-in-out;
-      opacity: 0;
-    }
-
-    .floating-lantern::after {
-      content: '';
-      position: absolute;
-      bottom: 3px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 7px;
-      height: 7px;
-      background: #ffffff;
-      border-radius: 50%;
-      box-shadow: 0 0 8px #ffffff, 0 0 12px #facc15;
-    }
-
-    @keyframes floatUp {
-      0% {
-        transform: translateY(0) scale(0.6) rotate(0deg);
-        opacity: 0;
-      }
-      15% {
-        opacity: 0.85;
-      }
-      85% {
-        opacity: 0.85;
-      }
-      100% {
-        transform: translateY(-115vh) scale(1.1) rotate(12deg);
-        opacity: 0;
-      }
-    }
-
-    /* Glow utilities */
-    .glow-gold {
-      filter: drop-shadow(0 0 10px rgba(250, 204, 21, 0.7));
-    }
-    .glow-star {
-      filter: drop-shadow(0 0 12px rgba(250, 204, 21, 0.9));
-    }
-    .braid-border {
-      background-image: repeating-linear-gradient(45deg, #facc15 0, #facc15 10px, #ca8a04 10px, #ca8a04 20px);
-    }
-
-    /* Glassmorphism Card */
-    .glass-card {
-      background: rgba(23, 9, 43, 0.75);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(176, 83, 235, 0.25);
-    }
-    .glass-card:hover {
-      border-color: rgba(250, 204, 21, 0.5);
-    }
-
-    /* Shimmer effect for buttons */
-    @keyframes shimmer {
-      100% { transform: translateX(100%); }
-    }
-    .shimmer-btn {
-      position: relative;
-      overflow: hidden;
-    }
-    .shimmer-btn::after {
-      position: absolute;
-      top: 0; right: 0; bottom: 0; left: 0;
-      transform: translateX(-100%);
-      background-image: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0) 0,
-        rgba(255, 255, 255, 0.25) 20%,
-        rgba(255, 255, 255, 0.6) 60%,
-        rgba(255, 255, 255, 0)
-      );
-      animation: shimmer 2.5s infinite;
-      content: '';
-    }
-
-    /* Golden Star Button Pulse */
-    .star-btn {
-      background: linear-gradient(135deg, #fef08a 0%, #facc15 50%, #eab308 100%);
-      box-shadow: 0 0 18px rgba(250, 204, 21, 0.5);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .star-btn:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 0 28px rgba(250, 204, 21, 0.8);
-    }
-  </style>
-</head>
-<body class="bg-magical-sky text-slate-100 font-sans min-h-screen relative flex flex-col selection:bg-corona-400 selection:text-rapunzel-950">
-
-  <!-- Background Animated Lanterns -->
-  <div id="lanterns-container" class="lantern-container" aria-hidden="true"></div>
-
-  <!-- Top Golden Braid Border Line -->
-  <div class="h-1.5 w-full braid-border shadow-[0_0_12px_#facc15] relative z-20"></div>
-
-  <!-- Header Section -->
-  <header class="relative z-10 border-b border-rapunzel-700/50 bg-rapunzel-950/85 backdrop-blur-md px-4 py-6 lg:py-8">
-    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-6">
-      
-      <!-- Corona Sun Emblem & Title -->
-      <div class="flex items-center gap-4 text-center lg:text-left">
-        <div class="relative group cursor-pointer" onclick="triggerSunBurst()">
-          <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-corona-600 via-corona-400 to-amber-200 p-0.5 shadow-[0_0_22px_rgba(250,204,21,0.6)] transition-transform duration-300 group-hover:scale-105">
-            <div class="w-full h-full bg-rapunzel-950 rounded-full flex items-center justify-center p-2">
-              <!-- Corona Sun SVG -->
-              <svg class="w-10 h-10 text-corona-400 glow-gold animate-pulse" viewBox="0 0 100 100" fill="currentColor">
-                <circle cx="50" cy="50" r="20" />
-                <path d="M50,10 Q53,25 50,30 Q47,25 50,10 Z M50,90 Q53,75 50,70 Q47,75 50,90 Z M10,50 Q25,53 30,50 Q25,47 10,50 Z M90,50 Q75,53 70,50 Q75,47 90,50 Z M22,22 Q34,31 36,36 Q31,34 22,22 Z M78,78 Q66,69 64,64 Q69,66 78,78 Z M78,22 Q69,34 64,36 Q66,31 78,22 Z M22,78 Q31,66 36,64 Q34,69 22,78 Z" />
-              </svg>
-            </div>
-          </div>
-          <span class="absolute -bottom-1 -right-1 text-xs bg-corona-500 text-rapunzel-950 font-bold px-1.5 py-0.5 rounded-full shadow">2027</span>
-        </div>
-
-        <div>
-          <h1 class="font-cinzel text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-corona-100 via-corona-400 to-rapunzel-300 bg-clip-text text-transparent drop-shadow-sm">
-            Portfólio de Exercícios
-          </h1>
-          <p class="text-rapunzel-200 text-sm flex items-center justify-center lg:justify-start gap-2 mt-1">
-            <i class="fa-solid fa-star text-corona-400 text-xs"></i>
-            <span>Projetos Hospedados no GitHub Pages • Ano Letivo 2027</span>
-          </p>
-        </div>
-      </div>
-
-      <!-- Student & Course Info Card -->
-      <div class="glass-card rounded-2xl p-4 w-full lg:w-auto flex flex-wrap items-center justify-around lg:justify-end gap-4 text-xs sm:text-sm">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-xl bg-rapunzel-800/80 border border-rapunzel-500/40 flex items-center justify-center text-corona-400">
-            <i class="fa-solid fa-user-graduate"></i>
-          </div>
-          <div>
-            <span class="text-rapunzel-300 text-xs block font-semibold uppercase tracking-wider">Aluno(a)</span>
-            <input type="text" id="student-name-input" value="Rapunzel de Corona" class="bg-transparent font-bold text-slate-100 focus:outline-none focus:border-b border-corona-400 w-36 sm:w-44" title="Clique para editar seu nome">
-          </div>
-        </div>
-
-        <div class="h-8 w-px bg-rapunzel-700/60 hidden sm:block"></div>
-
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-xl bg-rapunzel-800/80 border border-rapunzel-500/40 flex items-center justify-center text-corona-400">
-            <i class="fa-solid fa-chalkboard-user"></i>
-          </div>
-          <div>
-            <span class="text-rapunzel-300 text-xs block font-semibold uppercase tracking-wider">Turma / Professor</span>
-            <div class="flex items-center gap-1 font-semibold text-slate-200">
-              <input type="text" id="student-class-input" value="3º Ano T.I." class="bg-transparent focus:outline-none focus:border-b border-corona-400 w-20 text-xs">
-              <span>•</span>
-              <input type="text" id="teacher-name-input" value="Prof. Flynn Rider" class="bg-transparent focus:outline-none focus:border-b border-corona-400 w-28 text-xs">
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </header>
-
-  <!-- Main Content Container -->
-  <main class="relative z-10 max-w-7xl mx-auto px-4 py-8 flex-grow w-full">
-
-    <!-- Progress & Sundrop Flower Banner -->
-    <section class="glass-card rounded-3xl p-6 mb-8 border border-rapunzel-500/30 relative overflow-hidden shadow-2xl">
-      <div class="absolute -right-10 -bottom-10 opacity-15 pointer-events-none text-corona-400">
-        <!-- Magic Sundrop Flower SVG Background -->
-        <svg class="w-64 h-64" viewBox="0 0 100 100" fill="currentColor">
-          <path d="M50,10 C55,30 70,35 90,50 C70,65 55,70 50,90 C45,70 30,65 10,50 C30,35 45,30 50,10 Z" />
-        </svg>
-      </div>
-
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
-        <div class="space-y-2 text-center md:text-left">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-corona-500/20 border border-corona-400/40 text-corona-300 text-xs font-semibold">
-            <i class="fa-solid fa-sparkles text-corona-400"></i>
-            <span>Painel de Avaliação do Professor</span>
-          </div>
-          <h2 class="text-xl sm:text-2xl font-cinzel font-bold text-slate-100">Central de Trabalhos & Atividades 2027</h2>
-          <p class="text-rapunzel-200 text-sm max-w-xl">
-            Professor, clique no botão de <strong class="text-corona-300 font-bold">Estrela Mágica ⭐</strong> em cada card para abrir diretamente o projeto hospedado e testá-lo em tempo real!
-          </p>
-        </div>
-
-        <!-- Dynamic Counter Stats -->
-        <div class="grid grid-cols-3 gap-3 sm:gap-6 w-full md:w-auto text-center">
-          <div class="bg-rapunzel-900/80 border border-rapunzel-600/40 rounded-2xl p-3 sm:p-4">
-            <span class="block text-2xl sm:text-3xl font-bold font-cinzel text-corona-400" id="stat-total">0</span>
-            <span class="text-[11px] sm:text-xs text-rapunzel-200 font-medium uppercase tracking-wider">Total</span>
-          </div>
-          <div class="bg-rapunzel-900/80 border border-emerald-500/40 rounded-2xl p-3 sm:p-4">
-            <span class="block text-2xl sm:text-3xl font-bold font-cinzel text-emerald-400" id="stat-completed">0</span>
-            <span class="text-[11px] sm:text-xs text-emerald-200 font-medium uppercase tracking-wider">Entregues</span>
-          </div>
-          <div class="bg-rapunzel-900/80 border border-amber-500/40 rounded-2xl p-3 sm:p-4">
-            <span class="block text-2xl sm:text-3xl font-bold font-cinzel text-amber-400" id="stat-pending">0</span>
-            <span class="text-[11px] sm:text-xs text-amber-200 font-medium uppercase tracking-wider">Pendentes</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Glowing Magic Progress Bar -->
-      <div class="mt-6 pt-4 border-t border-rapunzel-800/60">
-        <div class="flex justify-between text-xs text-rapunzel-200 font-semibold mb-2">
-          <span>Brilho do Conhecimento (Projetos Concluídos)</span>
-          <span id="progress-percentage" class="text-corona-400 font-bold">0%</span>
-        </div>
-        <div class="w-full h-3 bg-rapunzel-950 rounded-full overflow-hidden p-0.5 border border-rapunzel-700/50">
-          <div id="progress-bar-fill" class="h-full bg-gradient-to-r from-amber-500 via-corona-400 to-yellow-200 rounded-full transition-all duration-700 shadow-[0_0_10px_#facc15]" style="width: 0%;"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Toolbar: Search, Filters & Add Button -->
-    <section class="flex flex-col md:flex-row items-center justify-between gap-4 mb-8">
-      
-      <!-- Bimestre Filter Tabs -->
-      <div class="flex items-center gap-1.5 p-1.5 bg-rapunzel-950/90 border border-rapunzel-700/60 rounded-2xl w-full md:w-auto overflow-x-auto scrollbar-none">
-        <button onclick="setFilter('all')" class="filter-tab active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-rapunzel-600 text-white shadow" data-filter="all">
-          ✨ Todos
-        </button>
-        <button onclick="setFilter('1')" class="filter-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap text-rapunzel-200 hover:text-white hover:bg-rapunzel-800/60" data-filter="1">
-          1º Bimestre
-        </button>
-        <button onclick="setFilter('2')" class="filter-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap text-rapunzel-200 hover:text-white hover:bg-rapunzel-800/60" data-filter="2">
-          2º Bimestre
-        </button>
-        <button onclick="setFilter('3')" class="filter-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap text-rapunzel-200 hover:text-white hover:bg-rapunzel-800/60" data-filter="3">
-          3º Bimestre
-        </button>
-        <button onclick="setFilter('4')" class="filter-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap text-rapunzel-200 hover:text-white hover:bg-rapunzel-800/60" data-filter="4">
-          4º Bimestre
-        </button>
-      </div>
-
-      <!-- Search & Add Actions -->
-      <div class="flex items-center gap-3 w-full md:w-auto">
-        <div class="relative flex-grow md:w-64">
-          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-rapunzel-400 text-sm"></i>
-          <input type="text" id="search-input" oninput="renderExercises()" placeholder="Buscar trabalho ou tecnologia..." class="w-full bg-rapunzel-950/80 border border-rapunzel-700/60 rounded-2xl pl-10 pr-4 py-2 text-sm text-slate-100 placeholder-rapunzel-400/60 focus:outline-none focus:border-corona-400 transition-colors">
-        </div>
-
-        <button onclick="openModal('add')" class="shimmer-btn bg-gradient-to-r from-corona-500 to-amber-600 hover:from-corona-400 hover:to-amber-500 text-rapunzel-950 font-bold px-4 py-2.5 rounded-2xl text-xs sm:text-sm flex items-center gap-2 shadow-[0_0_15px_rgba(250,204,21,0.3)] transition-transform active:scale-95 whitespace-nowrap">
-          <i class="fa-solid fa-plus text-sm"></i>
-          <span>Cadastrar Projeto</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- Exercises Grid -->
-    <section id="exercise-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Dynamic Exercise Cards with Golden Star Buttons injected here -->
-    </section>
-
-    <!-- Empty State -->
-    <div id="empty-state" class="hidden flex-col items-center justify-center text-center py-16 px-4 glass-card rounded-3xl mt-4">
-      <div class="w-20 h-20 rounded-full bg-rapunzel-800/60 flex items-center justify-center text-corona-400 mb-4 text-3xl">
-        <i class="fa-solid fa-folder-open"></i>
-      </div>
-      <h3 class="font-cinzel text-xl font-bold text-slate-200 mb-2">Nenhum exercício encontrado</h3>
-      <p class="text-rapunzel-300 text-sm max-w-md mb-6">Ainda não há atividades cadastradas neste filtro. Adicione seu primeiro link do GitHub Pages!</p>
-      <button onclick="openModal('add')" class="bg-rapunzel-700 hover:bg-rapunzel-600 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition">
-        + Cadastrar Trabalho
-      </button>
-    </div>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="relative z-10 border-t border-rapunzel-800/80 bg-rapunzel-950/90 py-6 px-4 text-center text-xs text-rapunzel-300">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
-        <span class="text-corona-400 font-bold font-cinzel">Corona Code 2027</span>
-        <span>• Portfólio de Atividades Curriculares de TI</span>
-      </div>
-      <div class="flex items-center gap-4">
-        <button onclick="resetToDefaults()" class="hover:text-corona-400 underline transition">Restaurar Exemplos Padrão</button>
-        <span>•</span>
-        <button onclick="exportData()" class="hover:text-corona-400 underline transition"><i class="fa-solid fa-download mr-1"></i>Exportar Backup</button>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ================= MASCOT PASCAL (FLOATING CHAMELEON) ================= -->
-  <div id="pascal-widget" class="fixed bottom-5 right-5 z-40 flex items-end gap-3 group">
-    <!-- Speech Bubble -->
-    <div id="pascal-bubble" class="glass-card bg-rapunzel-900/95 border-corona-400/50 p-3.5 rounded-2xl max-w-xs text-xs text-slate-200 shadow-2xl relative transition-all duration-300 transform scale-100 opacity-100 mb-2">
-      <div class="flex items-center justify-between gap-2 mb-1">
-        <span class="font-bold text-corona-400 font-cinzel text-[11px] flex items-center gap-1">
-          <i class="fa-solid fa-comment-dots"></i> Pascal Diz:
-        </span>
-        <button onclick="closePascalBubble(event)" class="text-rapunzel-400 hover:text-white text-xs p-0.5">✕</button>
-      </div>
-      <p id="pascal-text" class="italic text-slate-100">"Oi Professor! Clique na Estrela Mágica ⭐ para abrir os projetos hospedados no GitHub Pages!"</p>
-      <!-- Arrow pointing right to Pascal -->
-      <div class="absolute -bottom-2 right-6 w-3 h-3 bg-rapunzel-900 border-r border-b border-corona-400/50 transform rotate-45"></div>
-    </div>
-
-    <!-- Pascal Button Icon -->
-    <button onclick="interactPascal()" id="pascal-btn" class="relative group/pascal p-3 rounded-full bg-emerald-600 hover:bg-emerald-500 border-2 border-corona-400 shadow-[0_0_20px_rgba(16,185,129,0.5)] transition-all duration-300 transform hover:scale-110 active:scale-95" title="Clique no Pascal para ver frases e mudar de cor!">
-      <!-- Chameleon SVG Icon -->
-      <svg id="pascal-svg" class="w-8 h-8 text-slate-950 transition-colors duration-300" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19,10C19,8.5 18,7.2 16.6,6.7C16.8,6.2 17,5.6 17,5A3,3 0 0,0 14,2C13.2,2 12.5,2.3 12,2.8C11.5,2.3 10.8,2 10,2A3,3 0 0,0 7,5C7,5.6 7.2,6.2 7.4,6.7C6,7.2 5,8.5 5,10C5,11 5.4,11.9 6,12.6V16A3,3 0 0,0 9,19H10A3,3 0 0,0 13,22H15A1,1 0 0,0 16,21V19A3,3 0 0,0 19,16V12.6C19.6,11.9 20,11 20,10M9,4A1,1 0 0,1 10,5A1,1 0 0,1 9,6A1,1 0 0,1 8,5A1,1 0 0,1 9,4M15,4A1,1 0 0,1 16,5A1,1 0 0,1 15,6A1,1 0 0,1 14,5A1,1 0 0,1 15,4M12,17A1,1 0 0,1 11,16A1,1 0 0,1 12,15A1,1 0 0,1 13,16A1,1 0 0,1 12,17Z"/>
-      </svg>
-      <span class="absolute -top-1 -right-1 flex h-3 w-3">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-corona-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-3 w-3 bg-corona-500"></span>
-      </span>
-    </button>
-  </div>
-
-  <!-- ================= MODAL: ADD / EDIT LINK ================= -->
-  <div id="exercise-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-rapunzel-950/80 backdrop-blur-md hidden transition-opacity duration-300">
-    <div class="glass-card bg-rapunzel-900 border-rapunzel-500/50 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
-      
-      <div class="flex items-center justify-between border-b border-rapunzel-700/60 pb-4 mb-6">
-        <h3 id="modal-title" class="font-cinzel text-xl font-bold text-corona-400 flex items-center gap-2">
-          <i class="fa-solid fa-star text-corona-400"></i>
-          <span>Cadastrar Novo Trabalho do GitHub</span>
-        </h3>
-        <button onclick="closeModal('exercise')" class="w-8 h-8 rounded-full bg-rapunzel-800 hover:bg-rapunzel-700 text-rapunzel-200 flex items-center justify-center transition">✕</button>
-      </div>
-
-      <form id="exercise-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
-        <input type="hidden" id="form-id">
-
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div class="sm:col-span-2 space-y-1">
-            <label class="text-xs font-semibold text-rapunzel-200">Título do Exercício / Trabalho</label>
-            <input type="text" id="form-title" required placeholder="Ex: A Torre de Corona - Página Web" class="w-full bg-rapunzel-950 border border-rapunzel-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-corona-400">
-          </div>
-          <div class="space-y-1">
-            <label class="text-xs font-semibold text-rapunzel-200">Bimestre</label>
-            <select id="form-bimester" class="w-full bg-rapunzel-950 border border-rapunzel-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-corona-400">
-              <option value="1">1º Bimestre</option>
-              <option value="2">2º Bimestre</option>
-              <option value="3">3º Bimestre</option>
-              <option value="4">4º Bimestre</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="space-y-1">
-            <label class="text-xs font-semibold text-rapunzel-200">Status de Entrega</label>
-            <select id="form-status" class="w-full bg-rapunzel-950 border border-rapunzel-700 rounded-xl px-3 py-2 text-sm text-slate-100 focus:outline-none focus:border-corona-400">
-              <option value="Entregue">🟢 Entregue</option>
-              <option value="Corrigido">⭐ Corrigido pelo Professor</option>
-              <option value="Pendente">🟡 Pendente</option>
-            </select>
-          </div>
-          <div class="space-y-1">
-            <label class="text-xs font-semibold text-rapunzel-200">Identificador / Nº</label>
-            <input type="text" id="form-num" placeholder="Ex: Ex-01" class="w-full bg-rapunzel-950 border border-rapunzel-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-corona-400">
-          </div>
-        </div>
-
-        <!-- GitHub Links Fields -->
-        <div class="space-y-1">
-          <label class="text-xs font-semibold text-corona-300 flex items-center gap-1.5">
-            <i class="fa-solid fa-globe text-corona-400"></i>
-            <span>Link do Projeto Hospedado (GitHub Pages / Vercel / Site)</span>
-          </label>
-          <input type="url" id="form-url" required placeholder="https://seu-usuario.github.io/nome-do-repositorio" class="w-full bg-rapunzel-950 border border-corona-500/50 rounded-xl px-3.5 py-2 text-sm text-corona-200 focus:outline-none focus:border-corona-400">
-          <span class="text-[11px] text-rapunzel-300 italic">Este é o link que a Estrela Mágica ⭐ irá abrir quando o professor clicar!</span>
-        </div>
-
-        <div class="space-y-1">
-          <label class="text-xs font-semibold text-rapunzel-200 flex items-center gap-1.5">
-            <i class="fa-brands fa-github text-rapunzel-300"></i>
-            <span>Link do Repositório do Código (Opcional)</span>
-          </label>
-          <input type="url" id="form-repo" placeholder="https://github.com/seu-usuario/nome-do-repositorio" class="w-full bg-rapunzel-950 border border-rapunzel-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-corona-400">
-        </div>
-
-        <div class="space-y-1">
-          <label class="text-xs font-semibold text-rapunzel-200">Tecnologias Usadas (separadas por vírgula)</label>
-          <input type="text" id="form-techs" placeholder="Ex: HTML5, CSS3, JavaScript, Tailwind" class="w-full bg-rapunzel-950 border border-rapunzel-700 rounded-xl px-3.5 py-2 text-sm text-slate-100 focus:outline-none focus:border-corona-400">
-        </div>
-
-        <div class="space-y-1">
-          <label class="text-xs font-semibold text-rapunzel-200">Descrição Resumida / Objetivos</label>
-          <textarea id="form-desc" rows="3" required placeholder="Descreva o que foi desenvolvido neste trabalho..." class="w-full bg-rapunzel-950 border border-rapunzel-700 rounded-xl p-3 text-sm text-slate-100 focus:outline-none focus:border-corona-400 resize-none"></textarea>
-        </div>
-
-        <div class="flex items-center justify-end gap-3 pt-4 border-t border-rapunzel-800">
-          <button type="button" onclick="closeModal('exercise')" class="px-4 py-2 rounded-xl text-xs font-semibold text-rapunzel-300 hover:bg-rapunzel-800 transition">Cancelar</button>
-          <button type="submit" class="bg-gradient-to-r from-corona-500 to-amber-600 text-rapunzel-950 font-bold px-5 py-2 rounded-xl text-xs shadow-lg hover:brightness-110 transition">Salvar Projeto</button>
-        </div>
-      </form>
-
-    </div>
-  </div>
-
-  <!-- Custom Notification Toast -->
-  <div id="toast" class="fixed top-5 right-5 z-50 glass-card bg-rapunzel-900/95 border-corona-400 text-slate-100 px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3 transform translate-y-[-150%] transition-transform duration-300 pointer-events-none">
-    <div id="toast-icon" class="text-corona-400 text-lg"><i class="fa-solid fa-circle-check"></i></div>
-    <div id="toast-msg" class="text-xs font-semibold">Mensagem do sistema</div>
-  </div>
-
-  <!-- JavaScript Logic -->
-  <script>
-    // Sample Data with GitHub Pages links for instant teacher preview
-    const defaultExercises = [
-      {
-        id: 'ex-1',
-        num: '01',
-        title: 'Portifolio2026',
-        bimester: '1',
-        status: 'Entregue',
-        techs: ['HTML5', 'CSS3', 'Flexbox'],
-        description: 'Página responsiva criada com a história da torre de Corona e o mapa do reino. Hospedada diretamente no GitHub Pages.',
-        url: 'https://gabrielalinopereira-code.github.io/Portfolio/index.html',
-        repoUrl: 'https://gabrielalinopereira-code.github.io/Portfolio/index.html'
-      },
-      {
-        id: 'ex-2',
-        num: '02',
-        title: 'Festival das Lanternas (DOM & Loops)',
-        bimester: '1',
-        status: 'Corrigido',
-        techs: ['JavaScript', 'DOM', 'Tailwind'],
-        description: 'Aplicação interativa em JS que gera reluzentes lanternas flutuantes dinâmicas conforme interação do usuário.',
-        url: 'https://github.com',
-        repoUrl: 'https://github.com'
-      },
-      {
-        id: 'ex-3',
-        num: '03',
-        title: 'Frigideira Mágica (Jogo Canvas 2D)',
-        bimester: '2',
-        status: 'Entregue',
-        techs: ['HTML Canvas', 'JS OOP', 'CSS3'],
-        description: 'Mini game de física 2D simulando as habilidades de defesa da Rapunzel com sua frigideira.',
-        url: 'https://github.com',
-        repoUrl: 'https://github.com'
-      },
-      {
-        id: 'ex-4',
-        num: '04',
-        title: 'Camuflagem do Pascal (Array Methods)',
-        bimester: '2',
-        status: 'Pendente',
-        techs: ['JavaScript', 'CSS Variables'],
-        description: 'Sistema interativo de troca dinâmica de temas e cores usando seletores e eventos em JS.',
-        url: 'https://github.com',
-        repoUrl: 'https://github.com'
-      },
-      {
-        id: 'ex-5',
-        num: '05',
-        title: 'Poção da Flor Gota de Sol (Fetch API)',
-        bimester: '3',
-        status: 'Pendente',
-        techs: ['JS Async', 'Promises', 'API'],
-        description: 'Consumo de API assíncrona para buscar dados meteorológicos e astronômicos de Corona.',
-        url: 'https://github.com',
-        repoUrl: 'https://github.com'
-      }
-    ];
-
-    // State Variables
-    let exercises = [];
-    let currentFilter = 'all';
-    let pascalColorIndex = 0;
-
-    const pascalColors = [
-      { name: 'Emerald', bg: 'bg-emerald-600', fill: '#10b981', border: 'border-corona-400' },
-      { name: 'Purple', bg: 'bg-rapunzel-600', fill: '#8b2fc9', border: 'border-corona-400' },
-      { name: 'Gold', bg: 'bg-amber-500', fill: '#facc15', border: 'border-rapunzel-900' },
-      { name: 'Crimson', bg: 'bg-rose-600', fill: '#f43f5e', border: 'border-corona-400' },
-      { name: 'Cyan', bg: 'bg-cyan-600', fill: '#06b6d4', border: 'border-corona-400' }
-    ];
-
-    const pascalQuotes = [
-      "Pascal diz: Clique no botão ⭐ para testar o site no GitHub Pages!",
-      "Todos os links dos trabalhos estão prontos para correção do professor Flynn!",
-      "🍳 Se o código der erro, lembre-se de checar o console do seu navegador!",
-      "A trança de algoritmos de 2027 está super organizada!",
-      "Pascal testou todos os links do GitHub e deu nota 10!",
-      "Vejo enfim a luz passar... e os seus commits no GitHub estão atualizados!"
-    ];
-
-    // Initialization
-    window.onload = function() {
-      initLanterns();
-      loadData();
-      renderExercises();
-      updateStats();
-      setupProfileListeners();
-    };
-
-    // Create Floating Lanterns Background
-    function initLanterns() {
-      const container = document.getElementById('lanterns-container');
-      container.innerHTML = '';
-      const count = 16;
-      
-      for (let i = 0; i < count; i++) {
-        const lantern = document.createElement('div');
-        lantern.className = 'floating-lantern';
-        lantern.style.left = `${Math.random() * 95}%`;
-        lantern.style.animationDelay = `${Math.random() * 12}s`;
-        lantern.style.animationDuration = `${11 + Math.random() * 8}s`;
-        container.appendChild(lantern);
-      }
-    }
-
-    // LocalStorage Management
-    function loadData() {
-      const savedEx = localStorage.getItem('rapunzel_github_portfolio_2027');
-      if (savedEx) {
-        try {
-          exercises = JSON.parse(savedEx);
-        } catch(e) {
-          exercises = [...defaultExercises];
+    <style>
+        body {
+            background-color: #130826;
+            color: #f3e8ff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
         }
-      } else {
-        exercises = [...defaultExercises];
-        saveData();
-      }
 
-      // Load Profile Data
-      const student = localStorage.getItem('rapunzel_student_2027');
-      const studentClass = localStorage.getItem('rapunzel_class_2027');
-      const teacher = localStorage.getItem('rapunzel_teacher_2027');
-
-      if (student) document.getElementById('student-name-input').value = student;
-      if (studentClass) document.getElementById('student-class-input').value = studentClass;
-      if (teacher) document.getElementById('teacher-name-input').value = teacher;
-    }
-
-    function saveData() {
-      localStorage.setItem('rapunzel_github_portfolio_2027', JSON.stringify(exercises));
-      updateStats();
-    }
-
-    function setupProfileListeners() {
-      document.getElementById('student-name-input').addEventListener('change', (e) => {
-        localStorage.setItem('rapunzel_student_2027', e.target.value);
-        showToast('Nome do aluno salvo!');
-      });
-      document.getElementById('student-class-input').addEventListener('change', (e) => {
-        localStorage.setItem('rapunzel_class_2027', e.target.value);
-      });
-      document.getElementById('teacher-name-input').addEventListener('change', (e) => {
-        localStorage.setItem('rapunzel_teacher_2027', e.target.value);
-      });
-    }
-
-    // Render Exercises Cards
-    function renderExercises() {
-      const grid = document.getElementById('exercise-grid');
-      const emptyState = document.getElementById('empty-state');
-      const searchQuery = document.getElementById('search-input').value.toLowerCase();
-
-      grid.innerHTML = '';
-
-      const filtered = exercises.filter(item => {
-        const matchesFilter = (currentFilter === 'all') || (item.bimester === currentFilter);
-        const matchesSearch = item.title.toLowerCase().includes(searchQuery) ||
-                              item.description.toLowerCase().includes(searchQuery) ||
-                              (item.techs && item.techs.some(t => t.toLowerCase().includes(searchQuery))) ||
-                              item.num.toLowerCase().includes(searchQuery);
-        return matchesFilter && matchesSearch;
-      });
-
-      if (filtered.length === 0) {
-        emptyState.classList.remove('hidden');
-        emptyState.classList.add('flex');
-      } else {
-        emptyState.classList.add('hidden');
-        emptyState.classList.remove('flex');
-
-        filtered.forEach(ex => {
-          const card = document.createElement('div');
-          card.className = 'glass-card rounded-3xl p-5 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 shadow-xl group border border-rapunzel-700/50';
-
-          const isCompleted = ex.status === 'Entregue' || ex.status === 'Corrigido';
-
-          // Tech badges HTML
-          const techBadges = (ex.techs || []).map(t => 
-            `<span class="px-2 py-0.5 rounded-md text-[10px] font-mono font-semibold bg-rapunzel-950 border border-rapunzel-700/80 text-rapunzel-200">${t}</span>`
-          ).join(' ');
-
-          card.innerHTML = `
-            <div>
-              <!-- Top Row Metadata & Status -->
-              <div class="flex items-center justify-between gap-2 mb-3">
-                <span class="px-3 py-1 rounded-full text-xs font-bold bg-rapunzel-950 border border-rapunzel-700 text-corona-400 font-mono">
-                  ${ex.num || 'Ex'} • ${ex.bimester}º Bimestre
-                </span>
-                
-                <button onclick="toggleStatus('${ex.id}')" class="px-2.5 py-1 rounded-full text-[11px] font-bold border transition flex items-center gap-1.5 ${
-                  ex.status === 'Corrigido'
-                    ? 'bg-amber-950/90 border-corona-400 text-corona-300'
-                    : ex.status === 'Entregue'
-                    ? 'bg-emerald-950/80 border-emerald-500/50 text-emerald-300'
-                    : 'bg-purple-950/80 border-rapunzel-600/50 text-rapunzel-300'
-                }" title="Clique para alternar o status de entrega">
-                  <i class="fa-solid ${ex.status === 'Corrigido' ? 'fa-award text-corona-400' : ex.status === 'Entregue' ? 'fa-circle-check text-emerald-400' : 'fa-clock text-amber-400'}"></i>
-                  <span>${ex.status}</span>
-                </button>
-              </div>
-
-              <!-- Title -->
-              <h3 class="font-cinzel text-lg font-bold text-slate-100 group-hover:text-corona-300 transition-colors mb-2">
-                ${ex.title}
-              </h3>
-
-              <!-- Description -->
-              <p class="text-rapunzel-200 text-xs line-clamp-3 mb-3 leading-relaxed">
-                ${ex.description}
-              </p>
-
-              <!-- Tech Stack Badges -->
-              <div class="flex flex-wrap gap-1 mb-4">
-                ${techBadges}
-              </div>
-            </div>
-
-            <!-- Action Section with Prominent Golden Star Button -->
-            <div class="space-y-3 pt-3 border-t border-rapunzel-800/60">
-              
-              <!-- ⭐ GOLDEN STAR BUTTON (PROJECT URL) ⭐ -->
-              <button onclick="openProjectLink('${ex.url}')" class="star-btn w-full text-rapunzel-950 font-black py-2.5 px-4 rounded-2xl text-xs sm:text-sm flex items-center justify-center gap-2 group/star shadow-lg">
-                <i class="fa-solid fa-star text-rapunzel-950 text-sm group-hover/star:rotate-45 transition-transform"></i>
-                <span>⭐ Abrir Projeto (GitHub Pages)</span>
-                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-              </button>
-
-              <!-- Secondary Repo & Edit Actions -->
-              <div class="flex items-center gap-2">
-                ${ex.repoUrl ? `
-                  <button onclick="openProjectLink('${ex.repoUrl}')" class="flex-grow bg-rapunzel-950 hover:bg-rapunzel-800 text-rapunzel-200 border border-rapunzel-700 py-1.5 px-3 rounded-xl text-xs transition flex items-center justify-center gap-1.5" title="Ver código no GitHub">
-                    <i class="fa-brands fa-github text-sm"></i>
-                    <span>Repositório</span>
-                  </button>
-                ` : ''}
-
-                <button onclick="editExercise('${ex.id}')" class="w-8 h-8 rounded-xl bg-rapunzel-950 hover:bg-rapunzel-800 border border-rapunzel-700 text-rapunzel-200 flex items-center justify-center text-xs transition" title="Editar Links e Dados">
-                  <i class="fa-solid fa-pen"></i>
-                </button>
-
-                <button onclick="deleteExercise('${ex.id}')" class="w-8 h-8 rounded-xl bg-rapunzel-950 hover:bg-red-950/60 border border-rapunzel-700 text-rapunzel-300 hover:text-red-400 flex items-center justify-center text-xs transition" title="Excluir">
-                  <i class="fa-solid fa-trash-can"></i>
-                </button>
-              </div>
-
-            </div>
-          `;
-
-          grid.appendChild(card);
-        });
-      }
-    }
-
-    // Open Link in New Tab
-    function openProjectLink(url) {
-      if (!url || url === '#') {
-        showToast('⚠️ Insira uma URL válida no formulário de edição!');
-        return;
-      }
-      window.open(url, '_blank');
-      showToast('🚀 Abrindo trabalho no GitHub Pages...');
-    }
-
-    // Filter Logic
-    function setFilter(filter) {
-      currentFilter = filter;
-      document.querySelectorAll('.filter-tab').forEach(btn => {
-        if (btn.dataset.filter === filter) {
-          btn.className = 'filter-tab active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap bg-rapunzel-600 text-white shadow';
-        } else {
-          btn.className = 'filter-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all whitespace-nowrap text-rapunzel-200 hover:text-white hover:bg-rapunzel-800/60';
+        /* Background Animated Canvas */
+        #lanterns-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
         }
-      });
-      renderExercises();
-    }
 
-    // Update Statistics Bar
-    function updateStats() {
-      const total = exercises.length;
-      const completed = exercises.filter(e => e.status === 'Entregue' || e.status === 'Corrigido').length;
-      const pending = total - completed;
-      const percent = total === 0 ? 0 : Math.round((completed / total) * 100);
+        /* Glassmorphism Styles */
+        .glass-panel {
+            background: rgba(27, 12, 51, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(251, 191, 36, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(19, 8, 38, 0.6);
+        }
 
-      document.getElementById('stat-total').innerText = total;
-      document.getElementById('stat-completed').innerText = completed;
-      document.getElementById('stat-pending').innerText = pending;
-      document.getElementById('progress-percentage').innerText = `${percent}%`;
-      document.getElementById('progress-bar-fill').style.width = `${percent}%`;
-    }
+        .glass-panel-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-    // Toggle Status Cycle
-    function toggleStatus(id) {
-      const item = exercises.find(e => e.id === id);
-      if (item) {
-        if (item.status === 'Pendente') item.status = 'Entregue';
-        else if (item.status === 'Entregue') item.status = 'Corrigido';
-        else item.status = 'Pendente';
+        .glass-panel-hover:hover {
+            border-color: rgba(251, 191, 36, 0.65);
+            box-shadow: 0 0 25px rgba(251, 191, 36, 0.3);
+            transform: translateY(-4px);
+        }
 
-        saveData();
-        renderExercises();
-        showToast(`Status alterado para: ${item.status}`);
-      }
-    }
+        /* Glowing Effects */
+        .glow-gold-text {
+            text-shadow: 0 0 12px rgba(251, 191, 36, 0.6), 0 0 24px rgba(251, 191, 36, 0.3);
+        }
 
-    // Modal Operations
-    function openModal(type) {
-      if (type === 'add') {
-        document.getElementById('modal-title').innerText = 'Cadastrar Novo Trabalho do GitHub';
-        document.getElementById('form-id').value = '';
-        document.getElementById('form-title').value = '';
-        document.getElementById('form-bimester').value = '1';
-        document.getElementById('form-status').value = 'Entregue';
-        document.getElementById('form-num').value = `Ex-0${exercises.length + 1}`;
-        document.getElementById('form-url').value = 'https://seu-usuario.github.io/exercicio';
-        document.getElementById('form-repo').value = 'https://github.com/seu-usuario/exercicio';
-        document.getElementById('form-techs').value = 'HTML5, CSS3, JavaScript';
-        document.getElementById('form-desc').value = '';
+        .glow-box-gold {
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.35);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #130826;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2d1154;
+            border-radius: 4px;
+            border: 1px solid #fbbf24;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b21a8;
+        }
+
+        /* Golden Braid Animated Divider */
+        .braid-divider {
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #fbbf24, #fef08a, #f472b6, #fbbf24, transparent);
+            background-size: 200% 100%;
+            animation: shimmer 4s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .pascal-skin {
+            transition: fill 0.4s ease-in-out, transform 0.2s ease;
+        }
+
+        /* Code Editor Line Numbers Sync */
+        .editor-container {
+            position: relative;
+            font-family: 'Fira Code', monospace;
+        }
         
-        document.getElementById('exercise-modal').classList.remove('hidden');
-      }
-    }
-
-    function closeModal(type) {
-      if (type === 'exercise') {
-        document.getElementById('exercise-modal').classList.add('hidden');
-      }
-    }
-
-    function editExercise(id) {
-      const item = exercises.find(e => e.id === id);
-      if (!item) return;
-
-      document.getElementById('modal-title').innerText = 'Editar Trabalho / Projeto';
-      document.getElementById('form-id').value = item.id;
-      document.getElementById('form-title').value = item.title;
-      document.getElementById('form-bimester').value = item.bimester;
-      document.getElementById('form-status').value = item.status;
-      document.getElementById('form-num').value = item.num || '';
-      document.getElementById('form-url').value = item.url || '';
-      document.getElementById('form-repo').value = item.repoUrl || '';
-      document.getElementById('form-techs').value = (item.techs || []).join(', ');
-      document.getElementById('form-desc').value = item.description;
-
-      document.getElementById('exercise-modal').classList.remove('hidden');
-    }
-
-    function handleFormSubmit(e) {
-      e.preventDefault();
-
-      const id = document.getElementById('form-id').value;
-      const title = document.getElementById('form-title').value;
-      const bimester = document.getElementById('form-bimester').value;
-      const status = document.getElementById('form-status').value;
-      const num = document.getElementById('form-num').value;
-      const url = document.getElementById('form-url').value;
-      const repoUrl = document.getElementById('form-repo').value;
-      const techsRaw = document.getElementById('form-techs').value;
-      const description = document.getElementById('form-desc').value;
-
-      const techs = techsRaw.split(',').map(t => t.trim()).filter(t => t.length > 0);
-
-      if (id) {
-        const index = exercises.findIndex(ex => ex.id === id);
-        if (index !== -1) {
-          exercises[index] = { id, title, bimester, status, num, url, repoUrl, techs, description };
-          showToast('Trabalho atualizado com sucesso!');
+        .line-numbers {
+            user-select: none;
+            text-align: right;
+            color: #7e22ce;
+            padding-right: 12px;
+            font-size: 13px;
+            line-height: 1.5rem;
         }
-      } else {
-        const newEx = {
-          id: 'ex-' + Date.now(),
-          title,
-          bimester,
-          status,
-          num: num || `Ex-${exercises.length + 1}`,
-          url,
-          repoUrl,
-          techs,
-          description
-        };
-        exercises.unshift(newEx);
-        showToast('Novo trabalho cadastrado!');
-      }
+    </style>
+</head>
+<body class="min-h-screen relative flex flex-col justify-between">
 
-      saveData();
-      renderExercises();
-      closeModal('exercise');
-    }
+    <!-- Floating Lanterns Interactive Canvas -->
+    <canvas id="lanterns-canvas"></canvas>
 
-    function deleteExercise(id) {
-      if (confirm('Deseja realmente remover este trabalho do portfólio?')) {
-        exercises = exercises.filter(e => e.id !== id);
-        saveData();
-        renderExercises();
-        showToast('Exercício removido.');
-      }
-    }
+    <div class="relative z-10 flex-grow container mx-auto px-4 py-6 max-w-7xl">
 
-    // Pascal Mascot Interactions
-    function interactPascal() {
-      pascalColorIndex = (pascalColorIndex + 1) % pascalColors.length;
-      const theme = pascalColors[pascalColorIndex];
-      const btn = document.getElementById('pascal-btn');
-      
-      btn.className = `relative group/pascal p-3 rounded-full ${theme.bg} ${theme.border} border-2 shadow-[0_0_20px_rgba(250,204,21,0.5)] transition-all duration-300 transform hover:scale-110 active:scale-95`;
+        <!-- HEADER SECTION -->
+        <header class="glass-panel rounded-3xl p-6 md:p-8 mb-8 border-b-2 border-yellow-500/40 relative overflow-hidden">
+            <!-- Sundrop Flower Decorative Motif Background -->
+            <div class="absolute -right-10 -top-10 opacity-15 pointer-events-none text-yellow-400">
+                <svg width="280" height="280" viewBox="0 0 100 100" fill="currentColor">
+                    <circle cx="50" cy="50" r="18"/>
+                    <path d="M50 5 L55 32 L50 35 L45 32 Z" />
+                    <path d="M50 95 L55 68 L50 65 L45 68 Z" />
+                    <path d="M5 50 L32 55 L35 50 L32 45 Z" />
+                    <path d="M95 50 L68 55 L65 50 L68 45 Z" />
+                    <path d="M18 18 L38 34 L35 37 L31 34 Z" />
+                    <path d="M82 82 L62 66 L65 63 L69 66 Z" />
+                    <path d="M18 82 L34 62 L37 65 L34 69 Z" />
+                    <path d="M82 18 L66 38 L63 35 L66 31 Z" />
+                </svg>
+            </div>
 
-      const randomQuote = pascalQuotes[Math.floor(Math.random() * pascalQuotes.length)];
-      document.getElementById('pascal-text').innerText = randomQuote;
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+                <!-- Sun Icon & Title -->
+                <div class="flex items-center gap-5">
+                    <div class="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-tr from-yellow-600 via-amber-400 to-yellow-200 p-1 shadow-lg shadow-yellow-500/30 flex-shrink-0 flex items-center justify-center animate-pulse">
+                        <div class="w-full h-full rounded-full bg-rapunzel-deep flex items-center justify-center border-2 border-yellow-300">
+                            <i class="fa-solid fa-sun text-4xl md:text-5xl text-yellow-400 drop-shadow-[0_0_12px_rgba(250,204,21,0.9)]"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/30 text-yellow-300 text-xs font-semibold uppercase tracking-wider mb-2">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Ano Letivo 2027
+                        </div>
+                        <h1 class="text-3xl md:text-5xl font-cinzel font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 via-amber-300 to-yellow-500 glow-gold-text">
+                            Portfólio JavaScript
+                        </h1>
+                        <p class="text-purple-200/90 text-sm md:text-base mt-1">
+                            Laboratório de Exercícios & Avaliação Escolar com Integração GitHub
+                        </p>
+                    </div>
+                </div>
 
-      const bubble = document.getElementById('pascal-bubble');
-      bubble.style.opacity = '1';
-      bubble.style.transform = 'scale(1)';
-    }
+                <!-- Student Metadata & GitHub Badge -->
+                <div class="w-full lg:w-auto flex flex-col sm:flex-row gap-3">
+                    <!-- Student Info Box -->
+                    <div class="glass-panel p-4 rounded-2xl border border-purple-400/30 flex items-center justify-between gap-4 text-sm flex-grow">
+                        <div class="space-y-0.5">
+                            <p class="text-[11px] text-purple-300 uppercase font-semibold">Estudante</p>
+                            <p class="font-bold text-yellow-100 flex items-center gap-1.5">
+                                <i class="fa-solid fa-crown text-yellow-400 text-xs"></i>
+                                <span id="student-name-display" class="hover:underline cursor-pointer" onclick="editStudentInfo()">Estudante 2027</span>
+                            </p>
+                        </div>
+                        <div class="h-8 w-[1px] bg-purple-500/30"></div>
+                        <div class="space-y-0.5">
+                            <p class="text-[11px] text-purple-300 uppercase font-semibold">Professor(a)</p>
+                            <p class="font-medium text-purple-100 flex items-center gap-1.5">
+                                <i class="fa-solid fa-chalkboard-user text-rapunzel-softpink text-xs"></i>
+                                <span id="teacher-name-display" class="hover:underline cursor-pointer" onclick="editStudentInfo()">Prof. Corretor</span>
+                            </p>
+                        </div>
+                        <button onclick="editStudentInfo()" title="Editar Perfil" class="p-2 rounded-xl bg-purple-900/60 hover:bg-purple-800 text-yellow-300 border border-yellow-500/30 transition">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                        </button>
+                    </div>
 
-    function closePascalBubble(e) {
-      e.stopPropagation();
-      const bubble = document.getElementById('pascal-bubble');
-      bubble.style.opacity = '0';
-      bubble.style.transform = 'scale(0.8)';
-    }
+                    <!-- GitHub Sync Quick Status Card -->
+                    <div onclick="openGithubModal()" class="glass-panel p-4 rounded-2xl border border-yellow-500/30 hover:border-yellow-400 cursor-pointer transition flex items-center gap-3">
+                        <div id="github-status-icon" class="w-10 h-10 rounded-xl bg-purple-900/80 border border-yellow-500/40 flex items-center justify-center text-xl text-purple-300">
+                            <i class="fa-brands fa-github"></i>
+                        </div>
+                        <div>
+                            <p class="text-[11px] text-purple-300 font-semibold uppercase">Status GitHub</p>
+                            <p id="github-status-text" class="text-xs font-bold text-yellow-300">Não Configurado</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    function triggerSunBurst() {
-      showToast('☀️ Que a luz do Sol de Corona ilumine seus estudos em 2027!');
-    }
+            <div class="braid-divider mt-6 rounded-full"></div>
+        </header>
 
-    // Utility Toasts & Backup
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      document.getElementById('toast-msg').innerText = msg;
-      toast.style.transform = 'translateY(0)';
-      setTimeout(() => {
-        toast.style.transform = 'translateY(-150%)';
-      }, 3200);
-    }
+        <!-- DASHBOARD STATS -->
+        <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+            <div class="glass-panel p-4 rounded-2xl flex items-center gap-4 border-l-4 border-l-yellow-400">
+                <div class="p-3 rounded-xl bg-yellow-500/20 text-yellow-300">
+                    <i class="fa-solid fa-code text-2xl"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-bold font-cinzel text-yellow-200" id="stat-total">0</span>
+                    <p class="text-xs text-purple-300 font-medium">Exercícios Totais</p>
+                </div>
+            </div>
 
-    function resetToDefaults() {
-      if (confirm('Restaurar os exercícios de exemplo?')) {
-        exercises = [...defaultExercises];
-        saveData();
-        renderExercises();
-        showToast('Exemplos padrão restaurados!');
-      }
-    }
+            <div class="glass-panel p-4 rounded-2xl flex items-center gap-4 border-l-4 border-l-emerald-400">
+                <div class="p-3 rounded-xl bg-emerald-500/20 text-emerald-300">
+                    <i class="fa-solid fa-circle-check text-2xl"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-bold font-cinzel text-emerald-300" id="stat-completed">0</span>
+                    <p class="text-xs text-purple-300 font-medium">Concluídos</p>
+                </div>
+            </div>
 
-    function exportData() {
-      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exercises, null, 2));
-      const downloadAnchor = document.createElement('a');
-      downloadAnchor.setAttribute("href", dataStr);
-      downloadAnchor.setAttribute("download", `portfolio_rapunzel_2027.json`);
-      document.body.appendChild(downloadAnchor);
-      downloadAnchor.click();
-      downloadAnchor.remove();
-      showToast('Backup do portfólio baixado!');
-    }
-  </script>
+            <div class="glass-panel p-4 rounded-2xl flex items-center gap-4 border-l-4 border-l-pink-400">
+                <div class="p-3 rounded-xl bg-pink-500/20 text-pink-300">
+                    <i class="fa-solid fa-star text-2xl"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-bold font-cinzel text-pink-200" id="stat-avg-grade">10.0</span>
+                    <p class="text-xs text-purple-300 font-medium">Média Geral</p>
+                </div>
+            </div>
+
+            <div class="glass-panel p-4 rounded-2xl flex items-center gap-4 border-l-4 border-l-amber-500">
+                <div class="p-3 rounded-xl bg-amber-500/20 text-amber-300">
+                    <i class="fa-solid fa-fire-flame-curved text-2xl"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-bold font-cinzel text-amber-200" id="stat-lanterns">0</span>
+                    <p class="text-xs text-purple-300 font-medium">Lanternas Acesas</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOOLBAR: FILTERS, SEARCH & GITHUB / BACKUP ACTIONS -->
+        <section class="glass-panel p-4 md:p-6 rounded-2xl mb-8 space-y-4">
+            <!-- Top Controls Row -->
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-4">
+                <!-- Bimester Tabs -->
+                <div class="flex items-center gap-2 overflow-x-auto w-full lg:w-auto pb-2 lg:pb-0" id="bimester-tabs">
+                    <button onclick="filterBimester('all')" class="tab-btn px-4 py-2 rounded-xl text-xs md:text-sm font-semibold transition bg-yellow-500 text-rapunzel-night shadow-md" data-bimester="all">
+                        Todos
+                    </button>
+                    <button onclick="filterBimester(1)" class="tab-btn px-4 py-2 rounded-xl text-xs md:text-sm font-semibold transition bg-purple-900/50 text-purple-200 hover:bg-purple-800/60 border border-purple-500/30" data-bimester="1">
+                        1º Bimestre
+                    </button>
+                    <button onclick="filterBimester(2)" class="tab-btn px-4 py-2 rounded-xl text-xs md:text-sm font-semibold transition bg-purple-900/50 text-purple-200 hover:bg-purple-800/60 border border-purple-500/30" data-bimester="2">
+                        2º Bimestre
+                    </button>
+                    <button onclick="filterBimester(3)" class="tab-btn px-4 py-2 rounded-xl text-xs md:text-sm font-semibold transition bg-purple-900/50 text-purple-200 hover:bg-purple-800/60 border border-purple-500/30" data-bimester="3">
+                        3º Bimestre
+                    </button>
+                    <button onclick="filterBimester(4)" class="tab-btn px-4 py-2 rounded-xl text-xs md:text-sm font-semibold transition bg-purple-900/50 text-purple-200 hover:bg-purple-800/60 border border-purple-500/30" data-bimester="4">
+                        4º Bimestre
+                    </button>
+                </div>
+
+                <!-- Search Input & New Exercise Button -->
+                <div class="flex items-center gap-3 w-full lg:w-auto justify-end">
+                    <div class="relative flex-grow lg:w-60">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-purple-400 text-xs"></i>
+                        <input type="text" id="search-input" oninput="renderExercises()" placeholder="Buscar exercício..." 
+                               class="w-full bg-purple-950/70 border border-purple-500/40 rounded-xl pl-8 pr-3 py-2 text-xs md:text-sm text-purple-100 placeholder-purple-400 focus:outline-none focus:border-yellow-400 transition">
+                    </div>
+
+                    <button onclick="openAddModal()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 text-rapunzel-night font-bold text-xs md:text-sm shadow-lg shadow-yellow-500/20 hover:scale-105 active:scale-95 transition flex items-center gap-2 flex-shrink-0">
+                        <i class="fa-solid fa-plus text-sm"></i> Criar Exercício
+                    </button>
+                </div>
+            </div>
+
+            <!-- Bottom GitHub API & Backup Action Bar -->
+            <div class="pt-3 border-t border-purple-500/20 flex flex-wrap items-center justify-between gap-3 text-xs">
+                <div class="flex flex-wrap items-center gap-2">
+                    <!-- GitHub Push Button -->
+                    <button onclick="pushToGithub()" class="px-3 py-1.5 rounded-xl bg-emerald-700/60 hover:bg-emerald-600 text-emerald-100 border border-emerald-400/40 font-semibold transition flex items-center gap-1.5">
+                        <i class="fa-brands fa-github text-yellow-300"></i> Salvar no GitHub
+                    </button>
+
+                    <!-- GitHub Pull Button -->
+                    <button onclick="pullFromGithub()" class="px-3 py-1.5 rounded-xl bg-blue-900/60 hover:bg-blue-800 text-blue-100 border border-blue-400/40 font-semibold transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-cloud-arrow-down text-blue-300"></i> Atualizar do GitHub
+                    </button>
+
+                    <!-- Config Modal Toggle -->
+                    <button onclick="openGithubModal()" class="px-3 py-1.5 rounded-xl bg-purple-900/60 hover:bg-purple-800 text-purple-200 border border-purple-400/40 font-semibold transition flex items-center gap-1.5">
+                        <i class="fa-solid fa-gear text-yellow-400"></i> Configurar GitHub
+                    </button>
+                </div>
+
+                <!-- Backup JSON Buttons -->
+                <div class="flex items-center gap-2">
+                    <button onclick="exportBackupJSON()" title="Baixar arquivo JSON com todos os exercícios" class="px-3 py-1.5 rounded-xl bg-purple-950 hover:bg-purple-900 text-purple-200 border border-purple-500/40 transition flex items-center gap-1">
+                        <i class="fa-solid fa-file-export text-yellow-400"></i> Exportar JSON
+                    </button>
+                    
+                    <button onclick="triggerImportJSON()" title="Carregar exercícios de um arquivo JSON" class="px-3 py-1.5 rounded-xl bg-purple-950 hover:bg-purple-900 text-purple-200 border border-purple-500/40 transition flex items-center gap-1">
+                        <i class="fa-solid fa-file-import text-rapunzel-softpink"></i> Importar JSON
+                    </button>
+                    <input type="file" id="import-json-file" accept=".json" class="hidden" onchange="importBackupJSON(event)">
+                </div>
+            </div>
+        </section>
+
+        <!-- EXERCISES GRID -->
+        <main id="exercise-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <!-- Dynamic cards injected via JavaScript -->
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="relative z-10 glass-panel border-t border-yellow-500/20 py-6 mt-12 text-center text-xs text-purple-300">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-sun text-yellow-400 text-base"></i>
+                <span class="font-cinzel text-yellow-200 font-bold">Portfólio Rapunzel 2027</span>
+            </div>
+            <p>"Vejo enfim a luz brilhar... E o código sincronizar!" ✨</p>
+            <p class="text-purple-400">Com suporte a LocalStorage, Backup JSON & GitHub API</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE PASCAL MASCOT (Widget) -->
+    <div id="pascal-mascot-container" class="fixed bottom-5 right-5 z-40 flex flex-col items-end">
+        <!-- Speech Bubble -->
+        <div id="pascal-bubble" class="mb-2 mr-2 max-w-xs bg-purple-950/95 border border-yellow-400/60 text-purple-100 text-xs p-3 rounded-2xl rounded-br-none shadow-2xl backdrop-blur-md transition-all duration-300">
+            <p id="pascal-text" class="font-medium">Oi! Sou o Pascal 🦎! Clique em mim para mudar minha camuflagem ou ver dicas de JS!</p>
+        </div>
+
+        <!-- Chameleon SVG Button -->
+        <button onclick="interactPascal()" id="pascal-btn" title="Clique no Pascal!" class="relative p-2 rounded-full bg-purple-900/60 border border-yellow-500/50 shadow-xl hover:scale-110 active:scale-95 transition">
+            <svg id="pascal-svg" class="w-12 h-12 md:w-14 md:h-14 pascal-skin fill-emerald-500" viewBox="0 0 100 100">
+                <path d="M 20 60 C 10 60, 5 45, 15 35 C 22 28, 30 40, 22 45 C 18 47, 16 42, 18 40" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/>
+                <ellipse cx="50" cy="55" rx="25" ry="18" />
+                <path d="M 65 50 Q 80 40 85 55 Q 85 70 65 65 Z"/>
+                <path d="M 60 45 Q 70 30 80 42" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+                <circle cx="74" cy="50" r="7" fill="#ffffff" />
+                <circle id="pascal-pupil" cx="75" cy="50" r="3" fill="#000000" />
+                <ellipse cx="40" cy="72" rx="4" ry="7" />
+                <ellipse cx="58" cy="72" rx="4" ry="7" />
+                <path d="M 78 58 Q 82 60 84 57" fill="none" stroke="#000000" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span class="absolute top-0 right-0 flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-yellow-500"></span>
+            </span>
+        </button>
+    </div>
+
+    <!-- MODAL 1: GITHUB CONFIGURATION MODAL -->
+    <div id="github-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-lg rounded-3xl border-2 border-yellow-500/40 overflow-hidden shadow-2xl animate-fade-in">
+            <div class="bg-rapunzel-deep p-5 border-b border-yellow-500/30 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 bg-yellow-500/20 text-yellow-300 rounded-xl">
+                        <i class="fa-brands fa-github text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-cinzel font-bold text-lg text-yellow-200">Configuração do GitHub API</h3>
+                        <p class="text-xs text-purple-300">Sincronize seu código com seu repositório</p>
+                    </div>
+                </div>
+                <button onclick="closeGithubModal()" class="text-purple-300 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+
+            <form id="github-form" onsubmit="saveGithubConfig(event)" class="p-6 space-y-4 text-xs md:text-sm">
+                <div>
+                    <label class="block font-bold text-yellow-300 uppercase text-[11px] mb-1">GitHub PAT (Personal Access Token)</label>
+                    <div class="relative">
+                        <input type="password" id="gh-token" required placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" 
+                               class="w-full bg-purple-950 border border-purple-500/40 rounded-xl px-4 py-2.5 text-purple-100 focus:outline-none focus:border-yellow-400">
+                        <button type="button" onclick="toggleTokenVisibility()" class="absolute right-3 top-1/2 -translate-y-1/2 text-purple-400 hover:text-purple-200">
+                            <i id="token-eye-icon" class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                    <p class="text-[10px] text-purple-300/80 mt-1">Requer permissão de acesso ao escopo `repo` ou `gist`.</p>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block font-bold text-yellow-300 uppercase text-[11px] mb-1">Usuário GitHub</label>
+                        <input type="text" id="gh-username" required placeholder="seu-usuario" 
+                               class="w-full bg-purple-950 border border-purple-500/40 rounded-xl px-4 py-2 text-purple-100 focus:outline-none focus:border-yellow-400">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-yellow-300 uppercase text-[11px] mb-1">Nome do Repositório</label>
+                        <input type="text" id="gh-repo" required placeholder="portfolio-2027" 
+                               class="w-full bg-purple-950 border border-purple-500/40 rounded-xl px-4 py-2 text-purple-100 focus:outline-none focus:border-yellow-400">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block font-bold text-yellow-300 uppercase text-[11px] mb-1">Caminho do Arquivo</label>
+                        <input type="text" id="gh-path" required placeholder="exercicios_2027.json" 
+                               class="w-full bg-purple-950 border border-purple-500/40 rounded-xl px-4 py-2 text-purple-100 focus:outline-none focus:border-yellow-400">
+                    </div>
+                    <div>
+                        <label class="block font-bold text-yellow-300 uppercase text-[11px] mb-1">Branch</label>
+                        <input type="text" id="gh-branch" required placeholder="main" 
+                               class="w-full bg-purple-950 border border-purple-500/40 rounded-xl px-4 py-2 text-purple-100 focus:outline-none focus:border-yellow-400">
+                    </div>
+                </div>
+
+                <div class="pt-3 border-t border-purple-500/20 flex items-center justify-between">
+                    <button type="button" onclick="testGithubConnection()" class="px-3 py-2 rounded-xl bg-purple-900/60 hover:bg-purple-800 text-yellow-300 border border-yellow-500/30 text-xs font-semibold">
+                        <i class="fa-solid fa-plug mr-1"></i> Testar Conexão
+                    </button>
+                    <div class="flex items-center gap-2">
+                        <button type="button" onclick="closeGithubModal()" class="px-4 py-2 rounded-xl bg-purple-950 text-purple-300">Cancelar</button>
+                        <button type="submit" class="px-5 py-2 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-400 text-rapunzel-night font-bold shadow-md">Salvar Config</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 2: CODE EDITOR & ESPELHO MÁGICO (RUNNER & TEACHER EVALUATION) -->
+    <div id="code-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-5xl rounded-3xl border-2 border-yellow-500/40 overflow-hidden flex flex-col max-h-[92vh] shadow-2xl">
+            <!-- Modal Header -->
+            <div class="bg-rapunzel-deep p-4 md:p-5 border-b border-yellow-500/30 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 bg-yellow-500/20 text-yellow-300 rounded-xl">
+                        <i class="fa-solid fa-scroll text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 id="modal-title" class="font-cinzel font-bold text-lg md:text-xl text-yellow-200">Nome do Exercício</h3>
+                        <p id="modal-subtitle" class="text-xs text-purple-300">1º Bimestre • Status: Pendente</p>
+                    </div>
+                </div>
+                <button onclick="closeCodeModal()" class="w-10 h-10 rounded-xl bg-purple-900/50 hover:bg-purple-800 text-purple-200 flex items-center justify-center transition border border-purple-500/30">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Modal Scrollable Content -->
+            <div class="p-4 md:p-6 overflow-y-auto space-y-4 flex-grow">
+                <!-- Description Box -->
+                <div class="bg-purple-950/80 border border-purple-500/30 p-4 rounded-xl">
+                    <h4 class="text-xs uppercase font-bold text-yellow-400 mb-1 flex items-center gap-2">
+                        <i class="fa-solid fa-book-open"></i> Enunciado / Problema Proposto
+                    </h4>
+                    <p id="modal-description" class="text-xs md:text-sm text-purple-100 leading-relaxed">Instruções...</p>
+                </div>
+
+                <!-- Split Grid: Code Editor vs Console -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                    <!-- Left: Styled Code Editor -->
+                    <div class="flex flex-col">
+                        <div class="bg-purple-950 px-4 py-2 rounded-t-xl border border-purple-500/40 flex items-center justify-between text-xs font-code text-purple-300">
+                            <span><i class="fa-brands fa-js text-yellow-400 mr-1.5"></i> exercicio.js</span>
+                            <span class="text-purple-400 text-[10px]">Editor Interativo</span>
+                        </div>
+                        <div class="editor-container bg-[#0d041a] rounded-b-xl border-x border-b border-purple-500/40 flex p-2 h-64 lg:h-80 overflow-hidden">
+                            <!-- Line numbers column -->
+                            <div id="line-numbers" class="line-numbers pt-1 overflow-hidden">1</div>
+                            <!-- Main Textarea -->
+                            <textarea id="modal-code-editor" spellcheck="false" oninput="updateLineNumbers()" onscroll="syncScroll()"
+                                      class="w-full h-full bg-transparent text-yellow-100 font-code text-xs md:text-sm p-1 focus:outline-none resize-none leading-6"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Right: Espelho Mágico (Console Sandbox) -->
+                    <div class="flex flex-col">
+                        <div class="bg-purple-950 px-4 py-2 rounded-t-xl border border-purple-500/40 flex items-center justify-between text-xs font-code text-purple-300">
+                            <span><i class="fa-solid fa-wand-magic-sparkles text-emerald-400 mr-1.5"></i> Espelho Mágico (Console)</span>
+                            <button onclick="runCode()" class="px-3 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-sans font-bold transition flex items-center gap-1 shadow">
+                                <i class="fa-solid fa-play text-xs"></i> Executar Code
+                            </button>
+                        </div>
+                        <div id="modal-output" class="w-full h-64 lg:h-80 bg-[#07020d] text-emerald-400 font-code text-xs md:text-sm p-4 rounded-b-xl border-x border-b border-purple-500/40 overflow-y-auto whitespace-pre-wrap leading-relaxed">
+                            // Clique em "Executar Code" para testar o seu script...
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Teacher Feedback & Evaluation Area -->
+                <div class="bg-purple-900/40 border border-yellow-500/30 p-4 rounded-xl space-y-3">
+                    <h4 class="text-xs uppercase font-bold text-yellow-300 flex items-center gap-2">
+                        <i class="fa-solid fa-pen-ruler"></i> Área de Avaliação do Professor (2027)
+                    </h4>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-[11px] font-bold text-purple-300 uppercase mb-1">Nota (0.0 a 10.0)</label>
+                            <input type="number" id="modal-grade-input" min="0" max="10" step="0.5" placeholder="10.0" 
+                                   class="w-full bg-purple-950 border border-purple-400/50 rounded-lg px-3 py-1.5 text-yellow-200 font-bold focus:outline-none text-sm">
+                        </div>
+
+                        <div>
+                            <label class="block text-[11px] font-bold text-purple-300 uppercase mb-1">Status do Exercício</label>
+                            <select id="modal-status-select" class="w-full bg-purple-950 border border-purple-400/50 rounded-lg px-3 py-1.5 text-xs md:text-sm text-purple-100 focus:outline-none">
+                                <option value="Pendente">🟡 Pendente (Em andamento)</option>
+                                <option value="Em Análise">🔵 Em Análise pelo Professor</option>
+                                <option value="Aprovado">🟢 Aprovado / Concluído</option>
+                                <option value="Precisa de Ajustes">🔴 Precisa de Ajustes</option>
+                            </select>
+                        </div>
+
+                        <div class="md:col-span-1">
+                            <label class="block text-[11px] font-bold text-purple-300 uppercase mb-1">Feedback do Professor</label>
+                            <textarea id="modal-feedback-input" rows="2" placeholder="Digite observações sobre o código do aluno..." 
+                                      class="w-full bg-purple-950 border border-purple-400/50 rounded-lg p-2 text-xs text-purple-100 focus:outline-none"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer Buttons -->
+            <div class="bg-rapunzel-deep p-4 border-t border-yellow-500/30 flex items-center justify-between gap-4">
+                <button onclick="deleteCurrentExercise()" class="px-4 py-2 rounded-xl bg-red-900/40 hover:bg-red-800/60 text-red-200 border border-red-500/30 text-xs font-semibold transition">
+                    <i class="fa-solid fa-trash mr-1"></i> Excluir
+                </button>
+                <div class="flex items-center gap-3">
+                    <button onclick="closeCodeModal()" class="px-4 py-2 rounded-xl bg-purple-900/60 hover:bg-purple-800 text-purple-200 text-xs md:text-sm font-semibold transition">
+                        Cancelar
+                    </button>
+                    <button onclick="saveExerciseChanges()" class="px-5 py-2 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-400 hover:from-yellow-400 hover:to-amber-300 text-rapunzel-night font-bold text-xs md:text-sm shadow-md transition">
+                        <i class="fa-solid fa-floppy-disk mr-1"></i> Salvar Alterações
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 3: ADD NEW EXERCÍCIO MODAL -->
+    <div id="add-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-panel w-full max-w-lg rounded-3xl border-2 border-yellow-500/40 overflow-hidden shadow-2xl">
+            <div class="bg-rapunzel-deep p-5 border-b border-yellow-500/30 flex items-center justify-between">
+                <h3 class="font-cinzel font-bold text-lg text-yellow-200">Adicionar Novo Exercício</h3>
+                <button onclick="closeAddModal()" class="text-purple-300 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            
+            <form id="add-exercise-form" onsubmit="handleAddExercise(event)" class="p-6 space-y-4 text-xs md:text-sm">
+                <div>
+                    <label class="block font-bold text-yellow-300 uppercase text-[11px] mb-1">Título do Exercício</label>
+                    <input type="text" id="add-title" required placeholder="Ex: Algoritmo da Torre de Rapunzel" 
+                           class="w-full bg-purple-950 border border-purple-500/40 rounded-xl px-4 py-2 text-purple-100 focus:outline-none focus:border-yellow-400">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block font-bold text-yellow-300 uppercase text-[11px] mb-1">Bimestre Letivo</label>
+                        <select id="add-bimester" class="w-full bg-purple-950 border border-purple-500/40 rounded-xl px-3 py-2 text-purple-100 focus:outline-none">
+                            <option value="1">1º Bimestre</option>
+                            <option value="2">2º Bimestre</option>
+                            <option value="3">3º Bimestre</option>
+                            <option value="4">4º Bimestre</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block font-bold text-yellow-300 uppercase text-[11px] mb-1">Tópico / Categoria</label>
+                        <input type="text" id="add-category" placeholder="Ex: Loops / Arrays" 
+                               class="w-full bg-purple-950 border border-purple-500/40 rounded-xl px-4 py-2 text-purple-100 focus:outline-none focus:border-yellow-400">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block font-bold text-yellow-300 uppercase text-[11px] mb-1">Enunciado / Instruções</label>
+                    <textarea id="add-description" rows="3" placeholder="Digite as instruções do exercício passadas pelo professor..." 
+                              class="w-full bg-purple-950 border border-purple-500/40 rounded-xl p-3 text-purple-100 focus:outline-none focus:border-yellow-400"></textarea>
+                </div>
+
+                <div>
+                    <label class="block font-bold text-yellow-300 uppercase text-[11px] mb-1">Código JavaScript Inicial</label>
+                    <textarea id="add-code" rows="4" spellcheck="false" placeholder="// Escreva ou cole o seu código aqui&#10;console.log('Olá Mundo!');" 
+                              class="w-full bg-[#0d041a] font-code border border-purple-500/40 rounded-xl p-3 text-yellow-100 focus:outline-none focus:border-yellow-400"></textarea>
+                </div>
+
+                <div class="pt-2 flex items-center justify-end gap-3">
+                    <button type="button" onclick="closeAddModal()" class="px-4 py-2 rounded-xl bg-purple-950 text-purple-300">Cancelar</button>
+                    <button type="submit" class="px-5 py-2 rounded-xl bg-gradient-to-r from-yellow-500 to-amber-400 text-rapunzel-night font-bold shadow-md">Criar Exercício</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APP LOGIC -->
+    <script>
+        /* -------------------------------------------------------------
+           1. DEFAULT DATA & STORAGE INITIALIZATION
+           ------------------------------------------------------------- */
+        const DEFAULT_EXERCISES = [
+            {
+                id: 'ex-1',
+                title: 'O Brilho da Flor Dourada',
+                bimester: 1,
+                category: 'Variáveis & Operadores',
+                description: 'Crie uma função em JavaScript que receba a quantidade de pétalas ativas e calcule o poder de cura total acumulado (cada pétala concede 150 pontos de HP).',
+                code: `// Exercício 1: Cálculo de Poder Mágico\nfunction calcularBrilho(petalas) {\n    const poderPorPetala = 150;\n    const total = petalas * poderPorPetala;\n    console.log("Flor Dourada ativada com " + petalas + " pétalas!");\n    console.log("Poder de Cura Total: " + total + " HP ✨");\n    return total;\n}\n\ncalcularBrilho(5);`,
+                status: 'Aprovado',
+                grade: 10.0,
+                feedback: 'Excelente lógica e uso de constantes!',
+                date: '2027-02-15'
+            },
+            {
+                id: 'ex-2',
+                title: 'Contagem Regressiva das Lanternas',
+                bimester: 1,
+                category: 'Estruturas de Repetição',
+                description: 'Simule a subida das lanternas voadoras. Crie um loop que conte de 10 até 1 e imprima a mensagem final "Lanternas ao alto!"',
+                code: `// Exercício 2: Loop de Contagem\nconsole.log("Iniciando o festival de lanternas...");\nfor (let i = 10; i >= 1; i--) {\n    console.log("Subindo lanterna em... " + i);\n}\nconsole.log("✨ Vejo enfim a luz brilhar! ✨");`,
+                status: 'Aprovado',
+                grade: 9.5,
+                feedback: 'Muito bom! Ótima estrutura de repetição.',
+                date: '2027-03-01'
+            },
+            {
+                id: 'ex-3',
+                title: 'Sistema de Camuflagem do Pascal',
+                bimester: 2,
+                category: 'Condicionais (If/Else)',
+                description: 'Escreva um verificador para a cor da pele do Pascal com base no seu esconderijo ("floresta" -> verde, "torre" -> roxo, "lanternas" -> amarelo).',
+                code: `// Exercício 3: Camuflagem do Camaleão\nfunction ajustarCamuflagem(ambiente) {\n    let cor;\n    if (ambiente === "floresta") {\n        cor = "Verde Foliagem 🌿";\n    } else if (ambiente === "torre") {\n        cor = "Roxo Real 🏰";\n    } else if (ambiente === "lanternas") {\n        cor = "Dourado Brilhante ✨";\n    } else {\n        cor = "Verde Padrão 🦎";\n    }\n    console.log("Ambiente: " + ambiente + " => Pascal ficou: " + cor);\n}\n\najustarCamuflagem("lanternas");\najustarCamuflagem("torre");`,
+                status: 'Pendente',
+                grade: null,
+                feedback: '',
+                date: '2027-04-10'
+            }
+        ];
+
+        let exercises = JSON.parse(localStorage.getItem('rapunzel_exercises_2027')) || DEFAULT_EXERCISES;
+        let studentInfo = JSON.parse(localStorage.getItem('rapunzel_student_info')) || { name: 'Sua Rapunzel / Flynn', teacher: 'Prof. Corretor 2027' };
+        let githubConfig = JSON.parse(localStorage.getItem('rapunzel_github_config')) || { token: '', username: '', repo: '', path: 'exercicios_2027.json', branch: 'main' };
+        
+        let activeBimesterFilter = 'all';
+        let currentModalExerciseId = null;
+
+        /* -------------------------------------------------------------
+           2. APP RENDER & STATS
+           ------------------------------------------------------------- */
+        function initApp() {
+            renderStudentInfo();
+            renderExercises();
+            updateStats();
+            updateGithubStatusUI();
+            initLanternCanvas();
+        }
+
+        function saveState() {
+            localStorage.setItem('rapunzel_exercises_2027', JSON.stringify(exercises));
+            localStorage.setItem('rapunzel_student_info', JSON.stringify(studentInfo));
+            localStorage.setItem('rapunzel_github_config', JSON.stringify(githubConfig));
+            updateStats();
+        }
+
+        function renderStudentInfo() {
+            document.getElementById('student-name-display').innerText = studentInfo.name;
+            document.getElementById('teacher-name-display').innerText = studentInfo.teacher;
+        }
+
+        function editStudentInfo() {
+            const newName = prompt('Nome do Aluno(a):', studentInfo.name);
+            if (newName !== null && newName.trim() !== '') studentInfo.name = newName.trim();
+
+            const newTeacher = prompt('Nome do Professor(a):', studentInfo.teacher);
+            if (newTeacher !== null && newTeacher.trim() !== '') studentInfo.teacher = newTeacher.trim();
+
+            saveState();
+            renderStudentInfo();
+        }
+
+        function updateStats() {
+            const total = exercises.length;
+            const completed = exercises.filter(e => e.status === 'Aprovado' || e.status === 'Concluido').length;
+            const graded = exercises.filter(e => e.grade !== null && e.grade !== undefined && e.grade !== '');
+
+            let avgGrade = 10.0;
+            if (graded.length > 0) {
+                const sum = graded.reduce((acc, curr) => acc + Number(curr.grade), 0);
+                avgGrade = (sum / graded.length).toFixed(1);
+            }
+
+            document.getElementById('stat-total').innerText = total;
+            document.getElementById('stat-completed').innerText = completed;
+            document.getElementById('stat-lanterns').innerText = completed * 3;
+            document.getElementById('stat-avg-grade').innerText = avgGrade;
+        }
+
+        function filterBimester(bimester) {
+            activeBimesterFilter = bimester;
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                const bVal = btn.getAttribute('data-bimester');
+                if (bVal == bimester) {
+                    btn.className = "tab-btn px-4 py-2 rounded-xl text-xs md:text-sm font-semibold transition bg-yellow-500 text-rapunzel-night shadow-md font-medium";
+                } else {
+                    btn.className = "tab-btn px-4 py-2 rounded-xl text-xs md:text-sm font-semibold transition bg-purple-900/50 text-purple-200 hover:bg-purple-800/60 border border-purple-500/30";
+                }
+            });
+            renderExercises();
+        }
+
+        function renderExercises() {
+            const grid = document.getElementById('exercise-grid');
+            const searchVal = document.getElementById('search-input').value.toLowerCase();
+            grid.innerHTML = '';
+
+            const filtered = exercises.filter(item => {
+                const matchesBimester = (activeBimesterFilter === 'all') || (item.bimester == activeBimesterFilter);
+                const matchesSearch = item.title.toLowerCase().includes(searchVal) || 
+                                      (item.category && item.category.toLowerCase().includes(searchVal)) ||
+                                      item.description.toLowerCase().includes(searchVal);
+                return matchesBimester && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full glass-panel p-12 text-center rounded-3xl">
+                        <i class="fa-solid fa-cloud-moon text-5xl text-purple-400/50 mb-4"></i>
+                        <h4 class="font-cinzel text-xl text-yellow-200">Nenhum exercício encontrado</h4>
+                        <p class="text-xs md:text-sm text-purple-300 mt-1">Crie um novo exercício ou mude os termos de busca.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filtered.forEach(ex => {
+                const card = document.createElement('div');
+                card.className = "glass-panel glass-panel-hover rounded-2xl p-5 flex flex-col justify-between relative group";
+
+                let statusBadge = '';
+                if (ex.status === 'Aprovado' || ex.status === 'Concluido') {
+                    statusBadge = `<span class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">
+                                    <i class="fa-solid fa-check"></i> ${ex.grade ? 'Nota: ' + ex.grade : 'Aprovado'}
+                                   </span>`;
+                } else if (ex.status === 'Em Análise') {
+                    statusBadge = `<span class="px-2.5 py-1 rounded-full text-xs font-bold bg-blue-500/20 text-blue-300 border border-blue-500/40 flex items-center gap-1">
+                                    <i class="fa-solid fa-magnifying-glass"></i> Em Análise
+                                   </span>`;
+                } else if (ex.status === 'Precisa de Ajustes') {
+                    statusBadge = `<span class="px-2.5 py-1 rounded-full text-xs font-bold bg-red-500/20 text-red-300 border border-red-500/40 flex items-center gap-1">
+                                    <i class="fa-solid fa-triangle-exclamation"></i> Ajustar
+                                   </span>`;
+                } else {
+                    statusBadge = `<span class="px-2.5 py-1 rounded-full text-xs font-bold bg-purple-500/20 text-purple-300 border border-purple-500/40 flex items-center gap-1">
+                                    <i class="fa-solid fa-clock"></i> Pendente
+                                   </span>`;
+                }
+
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-purple-900/60 border border-purple-500/30 text-yellow-300">
+                                ${ex.bimester}º Bimestre
+                            </span>
+                            ${statusBadge}
+                        </div>
+
+                        <h3 class="font-cinzel font-bold text-lg text-yellow-100 group-hover:text-yellow-300 transition-colors line-clamp-1 mb-2">
+                            ${ex.title}
+                        </h3>
+
+                        <div class="text-xs text-purple-300 mb-3 flex items-center gap-1 font-mono">
+                            <i class="fa-solid fa-tag text-rapunzel-softpink text-[10px]"></i>
+                            <span>${ex.category || 'JavaScript'}</span>
+                        </div>
+
+                        <p class="text-xs text-purple-200/80 line-clamp-3 leading-relaxed mb-4">
+                            ${ex.description}
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-purple-500/20 flex items-center justify-between">
+                        <span class="text-[11px] text-purple-400 font-mono">
+                            <i class="fa-regular fa-calendar-days mr-1"></i>${ex.date || '2027'}
+                        </span>
+
+                        <button onclick="openCodeModal('${ex.id}')" class="px-4 py-1.5 rounded-xl bg-purple-800/50 hover:bg-yellow-500 hover:text-rapunzel-night text-yellow-300 border border-yellow-500/30 text-xs font-bold transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-code"></i> Abrir & Executar
+                        </button>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        /* -------------------------------------------------------------
+           3. CODE EDITOR & CONSOLE SANDBOX (ESPELHO MÁGICO)
+           ------------------------------------------------------------- */
+        function openCodeModal(id) {
+            const ex = exercises.find(item => item.id === id);
+            if (!ex) return;
+
+            currentModalExerciseId = id;
+            document.getElementById('modal-title').innerText = ex.title;
+            document.getElementById('modal-subtitle').innerText = `${ex.bimester}º Bimestre • Categoria: ${ex.category || 'Geral'}`;
+            document.getElementById('modal-description').innerText = ex.description;
+            
+            const editor = document.getElementById('modal-code-editor');
+            editor.value = ex.code || '';
+            updateLineNumbers();
+
+            document.getElementById('modal-grade-input').value = ex.grade !== null && ex.grade !== undefined ? ex.grade : '';
+            document.getElementById('modal-status-select').value = ex.status || 'Pendente';
+            document.getElementById('modal-feedback-input').value = ex.feedback || '';
+            document.getElementById('modal-output').innerText = '// Clique em "Executar Code" para testar o seu script...';
+
+            document.getElementById('code-modal').classList.remove('hidden');
+        }
+
+        function closeCodeModal() {
+            document.getElementById('code-modal').classList.add('hidden');
+            currentModalExerciseId = null;
+        }
+
+        function updateLineNumbers() {
+            const editor = document.getElementById('modal-code-editor');
+            const lineNumCol = document.getElementById('line-numbers');
+            const lines = editor.value.split('\n').length;
+            lineNumCol.innerHTML = Array.from({length: lines}, (_, i) => i + 1).join('<br>');
+        }
+
+        function syncScroll() {
+            const editor = document.getElementById('modal-code-editor');
+            const lineNumCol = document.getElementById('line-numbers');
+            lineNumCol.scrollTop = editor.scrollTop;
+        }
+
+        function runCode() {
+            const code = document.getElementById('modal-code-editor').value;
+            const outputBox = document.getElementById('modal-output');
+            outputBox.innerText = '';
+            let logs = [];
+
+            const originalLog = console.log;
+            const originalWarn = console.warn;
+            const originalError = console.error;
+
+            console.log = function(...args) {
+                logs.push(args.map(a => (typeof a === 'object' ? JSON.stringify(a, null, 2) : a)).join(' '));
+                originalLog.apply(console, args);
+            };
+            console.warn = function(...args) {
+                logs.push("⚠️ " + args.join(' '));
+                originalWarn.apply(console, args);
+            };
+            console.error = function(...args) {
+                logs.push("❌ ERRO: " + args.join(' '));
+                originalError.apply(console, args);
+            };
+
+            try {
+                const runnable = new Function(code);
+                runnable();
+                
+                if (logs.length === 0) {
+                    outputBox.innerText = "✨ Executado com sucesso! (Nenhum console.log() chamado)";
+                } else {
+                    outputBox.innerText = logs.join('\n');
+                }
+            } catch (err) {
+                outputBox.innerText = `❌ ERRO DE EXECUÇÃO:\n${err.message}`;
+            } finally {
+                console.log = originalLog;
+                console.warn = originalWarn;
+                console.error = originalError;
+            }
+        }
+
+        function saveExerciseChanges() {
+            if (!currentModalExerciseId) return;
+
+            const ex = exercises.find(item => item.id === currentModalExerciseId);
+            if (ex) {
+                ex.code = document.getElementById('modal-code-editor').value;
+                const gradeVal = document.getElementById('modal-grade-input').value;
+                ex.grade = gradeVal !== '' ? parseFloat(gradeVal) : null;
+                ex.status = document.getElementById('modal-status-select').value;
+                ex.feedback = document.getElementById('modal-feedback-input').value.trim();
+
+                saveState();
+                renderExercises();
+                closeCodeModal();
+                showToast('Exercício salvo com sucesso! ✨');
+            }
+        }
+
+        function deleteCurrentExercise() {
+            if (!currentModalExerciseId) return;
+            if (confirm('Tem certeza que deseja excluir este exercício?')) {
+                exercises = exercises.filter(item => item.id !== currentModalExerciseId);
+                saveState();
+                renderExercises();
+                closeCodeModal();
+                showToast('Exercício excluído!');
+            }
+        }
+
+        /* -------------------------------------------------------------
+           4. NEW EXERCISE CREATION
+           ------------------------------------------------------------- */
+        function openAddModal() {
+            document.getElementById('add-exercise-form').reset();
+            document.getElementById('add-modal').classList.remove('hidden');
+        }
+
+        function closeAddModal() {
+            document.getElementById('add-modal').classList.add('hidden');
+        }
+
+        function handleAddExercise(e) {
+            e.preventDefault();
+            const title = document.getElementById('add-title').value.trim();
+            const bimester = parseInt(document.getElementById('add-bimester').value);
+            const category = document.getElementById('add-category').value.trim();
+            const description = document.getElementById('add-description').value.trim();
+            const code = document.getElementById('add-code').value;
+
+            const newEx = {
+                id: 'ex-' + Date.now(),
+                title: title,
+                bimester: bimester,
+                category: category || 'JavaScript',
+                description: description || 'Sem instrução.',
+                code: code || '// Escreva seu código aqui\n',
+                status: 'Pendente',
+                grade: null,
+                feedback: '',
+                date: new Date().toISOString().split('T')[0]
+            };
+
+            exercises.unshift(newEx);
+            saveState();
+            renderExercises();
+            closeAddModal();
+            showToast('Novo exercício criado com sucesso! ☀️');
+        }
+
+        /* -------------------------------------------------------------
+           5. GITHUB REST API INTEGRATION (PUSH / PULL / CONFIG)
+           ------------------------------------------------------------- */
+        function openGithubModal() {
+            document.getElementById('gh-token').value = githubConfig.token || '';
+            document.getElementById('gh-username').value = githubConfig.username || '';
+            document.getElementById('gh-repo').value = githubConfig.repo || '';
+            document.getElementById('gh-path').value = githubConfig.path || 'exercicios_2027.json';
+            document.getElementById('gh-branch').value = githubConfig.branch || 'main';
+            document.getElementById('github-modal').classList.remove('hidden');
+        }
+
+        function closeGithubModal() {
+            document.getElementById('github-modal').classList.add('hidden');
+        }
+
+        function toggleTokenVisibility() {
+            const input = document.getElementById('gh-token');
+            const icon = document.getElementById('token-eye-icon');
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.className = 'fa-solid fa-eye-slash';
+            } else {
+                input.type = 'password';
+                icon.className = 'fa-solid fa-eye';
+            }
+        }
+
+        function saveGithubConfig(e) {
+            e.preventDefault();
+            githubConfig = {
+                token: document.getElementById('gh-token').value.trim(),
+                username: document.getElementById('gh-username').value.trim(),
+                repo: document.getElementById('gh-repo').value.trim(),
+                path: document.getElementById('gh-path').value.trim() || 'exercicios_2027.json',
+                branch: document.getElementById('gh-branch').value.trim() || 'main'
+            };
+            saveState();
+            updateGithubStatusUI();
+            closeGithubModal();
+            showToast('Configurações do GitHub salvas!');
+        }
+
+        function updateGithubStatusUI() {
+            const iconBox = document.getElementById('github-status-icon');
+            const statusText = document.getElementById('github-status-text');
+
+            if (githubConfig.token && githubConfig.username && githubConfig.repo) {
+                iconBox.className = "w-10 h-10 rounded-xl bg-emerald-900/80 border border-emerald-400/50 flex items-center justify-center text-xl text-emerald-300";
+                statusText.className = "text-xs font-bold text-emerald-300";
+                statusText.innerText = "Configurado";
+            } else {
+                iconBox.className = "w-10 h-10 rounded-xl bg-purple-900/80 border border-yellow-500/40 flex items-center justify-center text-xl text-purple-300";
+                statusText.className = "text-xs font-bold text-yellow-300";
+                statusText.innerText = "Não Configurado";
+            }
+        }
+
+        // UTF-8 Safe Base64 Encoders
+        function utf8ToBase64(str) {
+            return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (match, p1) => String.fromCharCode('0x' + p1)));
+        }
+
+        function base64ToUtf8(str) {
+            return decodeURIComponent(Array.prototype.map.call(atob(str.replace(/\s/g, '')), c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+        }
+
+        async function testGithubConnection() {
+            const token = document.getElementById('gh-token').value.trim();
+            const username = document.getElementById('gh-username').value.trim();
+            const repo = document.getElementById('gh-repo').value.trim();
+
+            if (!token || !username || !repo) {
+                alert('Preencha Token, Usuário e Repositório para testar.');
+                return;
+            }
+
+            try {
+                const res = await fetch(`https://api.github.com/repos/${username}/${repo}`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                if (res.ok) {
+                    alert('✨ Conexão com GitHub realizada com sucesso!');
+                } else {
+                    const err = await res.json();
+                    alert(`❌ Erro de Conexão: ${err.message || res.statusText}`);
+                }
+            } catch (err) {
+                alert(`❌ Erro ao conectar com GitHub API: ${err.message}`);
+            }
+        }
+
+        async function pushToGithub() {
+            if (!githubConfig.token || !githubConfig.username || !githubConfig.repo) {
+                showToast('Configure o GitHub antes de salvar!');
+                openGithubModal();
+                return;
+            }
+
+            showToast('Enviando código para o GitHub... ☁️');
+
+            const url = `https://api.github.com/repos/${githubConfig.username}/${githubConfig.repo}/contents/${githubConfig.path}`;
+            const jsonPayload = JSON.stringify({
+                student: studentInfo,
+                exercises: exercises,
+                updatedAt: new Date().toISOString()
+            }, null, 2);
+
+            const contentBase64 = utf8ToBase64(jsonPayload);
+
+            try {
+                // Get existing file SHA if present to allow overwrite
+                let existingSha = null;
+                const getRes = await fetch(`${url}?ref=${githubConfig.branch}`, {
+                    headers: { 'Authorization': `Bearer ${githubConfig.token}` }
+                });
+                if (getRes.ok) {
+                    const fileData = await getRes.json();
+                    existingSha = fileData.sha;
+                }
+
+                // Push commit via PUT request
+                const putRes = await fetch(url, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${githubConfig.token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: `Atualização do Portfólio 2027 (${exercises.length} exercícios)`,
+                        content: contentBase64,
+                        sha: existingSha,
+                        branch: githubConfig.branch
+                    })
+                });
+
+                if (putRes.ok) {
+                    showToast('Portfólio salvo no GitHub com sucesso! 🚀');
+                } else {
+                    const err = await putRes.json();
+                    alert(`Erro ao salvar no GitHub: ${err.message}`);
+                }
+            } catch (err) {
+                alert(`Erro de rede no GitHub API: ${err.message}`);
+            }
+        }
+
+        async function pullFromGithub() {
+            if (!githubConfig.token || !githubConfig.username || !githubConfig.repo) {
+                showToast('Configure o GitHub primeiro!');
+                openGithubModal();
+                return;
+            }
+
+            showToast('Baixando dados do GitHub... ⬇️');
+            const url = `https://api.github.com/repos/${githubConfig.username}/${githubConfig.repo}/contents/${githubConfig.path}?ref=${githubConfig.branch}`;
+
+            try {
+                const res = await fetch(url, {
+                    headers: { 'Authorization': `Bearer ${githubConfig.token}` }
+                });
+
+                if (res.ok) {
+                    const data = await res.json();
+                    const jsonContent = base64ToUtf8(data.content);
+                    const parsed = JSON.parse(jsonContent);
+
+                    if (parsed.exercises && Array.isArray(parsed.exercises)) {
+                        exercises = parsed.exercises;
+                        if (parsed.student) studentInfo = parsed.student;
+                        saveState();
+                        renderStudentInfo();
+                        renderExercises();
+                        showToast('Dados atualizados com sucesso do GitHub! ✨');
+                    } else {
+                        alert('Formato de arquivo JSON do GitHub não reconhecido.');
+                    }
+                } else {
+                    const err = await res.json();
+                    alert(`Erro ao buscar do GitHub: ${err.message}`);
+                }
+            } catch (err) {
+                alert(`Erro ao atualizar do GitHub: ${err.message}`);
+            }
+        }
+
+        /* -------------------------------------------------------------
+           6. LOCAL FILE BACKUP (EXPORT / IMPORT JSON)
+           ------------------------------------------------------------- */
+        function exportBackupJSON() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({
+                student: studentInfo,
+                exercises: exercises,
+                exportedAt: new Date().toISOString()
+            }, null, 2));
+
+            const downloadAnchor = document.createElement('a');
+            downloadAnchor.setAttribute("href", dataStr);
+            downloadAnchor.setAttribute("download", `portfolio_rapunzel_2027_${Date.now()}.json`);
+            document.body.appendChild(downloadAnchor);
+            downloadAnchor.click();
+            downloadAnchor.remove();
+            showToast('Backup JSON baixado!');
+        }
+
+        function triggerImportJSON() {
+            document.getElementById('import-json-file').click();
+        }
+
+        function importBackupJSON(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const imported = JSON.parse(e.target.result);
+                    if (imported.exercises && Array.isArray(imported.exercises)) {
+                        exercises = imported.exercises;
+                        if (imported.student) studentInfo = imported.student;
+                        saveState();
+                        renderStudentInfo();
+                        renderExercises();
+                        showToast('Backup JSON importado com sucesso!');
+                    } else {
+                        alert('Arquivo JSON inválido.');
+                    }
+                } catch (err) {
+                    alert('Erro ao ler o arquivo JSON: ' + err.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        /* -------------------------------------------------------------
+           7. INTERACTIVE PASCAL MASCOT
+           ------------------------------------------------------------- */
+        const PASCAL_COLORS = ['fill-emerald-500', 'fill-purple-500', 'fill-amber-400', 'fill-rose-500', 'fill-blue-500', 'fill-red-500'];
+        const PASCAL_TIPS = [
+            "Use sempre 'const' para valores fixos e 'let' para variáveis reutilizáveis!",
+            "Pascal diz: Lembre-se do console.log() para ver o valor das variáveis!",
+            "Atenção com chaves {} e parênteses () ao criar funções!",
+            "Vejo enfim a luz brilhar... E o seu código compilando! ✨",
+            "Não se esqueça de salvar no GitHub após completar o bimestre!",
+            "Modo Camuflagem ativado! Qual minha próxima cor?"
+        ];
+        let pascalIdx = 0;
+
+        function interactPascal() {
+            const svg = document.getElementById('pascal-svg');
+            PASCAL_COLORS.forEach(c => svg.classList.remove(c));
+            pascalIdx = (pascalIdx + 1) % PASCAL_COLORS.length;
+            svg.classList.add(PASCAL_COLORS[pascalIdx]);
+
+            const tip = PASCAL_TIPS[Math.floor(Math.random() * PASCAL_TIPS.length)];
+            document.getElementById('pascal-text').innerText = tip;
+
+            const pupil = document.getElementById('pascal-pupil');
+            pupil.setAttribute('cx', Math.random() > 0.5 ? '73' : '77');
+        }
+
+        /* -------------------------------------------------------------
+           8. FLOATING LANTERNS CANVAS ANIMATION
+           ------------------------------------------------------------- */
+        function initLanternCanvas() {
+            const canvas = document.getElementById('lanterns-canvas');
+            const ctx = canvas.getContext('2d');
+            let width = canvas.width = window.innerWidth;
+            let height = canvas.height = window.innerHeight;
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            });
+
+            const count = Math.min(Math.floor(width / 35), 35);
+            const lanterns = [];
+
+            for (let i = 0; i < count; i++) {
+                lanterns.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height + height,
+                    size: Math.random() * 12 + 10,
+                    speedY: Math.random() * 0.6 + 0.3,
+                    swayAmp: Math.random() * 1.5 + 0.5,
+                    swaySpeed: Math.random() * 0.02 + 0.005,
+                    swayOffset: Math.random() * Math.PI * 2,
+                    alpha: Math.random() * 0.5 + 0.4
+                });
+            }
+
+            function drawLantern(l) {
+                ctx.save();
+                ctx.translate(l.x, l.y);
+                ctx.globalAlpha = l.alpha;
+
+                const glow = ctx.createRadialGradient(0, 0, 2, 0, 0, l.size * 2);
+                glow.addColorStop(0, 'rgba(253, 224, 71, 0.85)');
+                glow.addColorStop(0.4, 'rgba(249, 115, 22, 0.4)');
+                glow.addColorStop(1, 'rgba(249, 115, 22, 0)');
+                
+                ctx.fillStyle = glow;
+                ctx.beginPath();
+                ctx.arc(0, 0, l.size * 2, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.fillStyle = 'rgba(254, 240, 138, 0.9)';
+                ctx.beginPath();
+                ctx.roundRect(-l.size * 0.6, -l.size * 0.8, l.size * 1.2, l.size * 1.6, 4);
+                ctx.fill();
+
+                ctx.fillStyle = '#ff9800';
+                ctx.beginPath();
+                ctx.arc(0, l.size * 0.2, l.size * 0.3, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.restore();
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                lanterns.forEach(l => {
+                    l.y -= l.speedY;
+                    l.swayOffset += l.swaySpeed;
+                    l.x += Math.sin(l.swayOffset) * l.swayAmp * 0.5;
+
+                    if (l.y < -30) {
+                        l.y = height + 30;
+                        l.x = Math.random() * width;
+                    }
+                    drawLantern(l);
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        /* Toast Helper */
+        function showToast(msg) {
+            const toast = document.createElement('div');
+            toast.className = "fixed top-5 right-5 z-50 bg-yellow-500 text-rapunzel-night font-bold px-4 py-3 rounded-2xl shadow-2xl border border-yellow-200 transition-all duration-300 transform translate-y-0 text-xs md:text-sm";
+            toast.innerHTML = `<i class="fa-solid fa-sun mr-2"></i> ${msg}`;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(-10px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        window.onload = initApp;
+    </script>
 </body>
 </html>
